@@ -6,20 +6,35 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint:ts": "next lint",
+    "fix:ts": "next lint --fix",
+    "lint:css": "stylelint '**/*.scss'",
+    "fix:css": "stylelint '**/*.scss' --fix",
+    "prepare": "husky"
   },
   "dependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "next": "15.1.7"
+    "@bem-react/classname": "1.6.0",
+    "next": "15.1.7",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "sass": "1.84.0"
   },
   "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
+    "@eslint/eslintrc": "3",
+    "@types/node": "20",
+    "@types/react": "19",
+    "@types/react-dom": "19",
+    "@typescript-eslint/parser": "8.24.0",
+    "add": "2.0.6",
+    "eslint": "9",
     "eslint-config-next": "15.1.7",
-    "@eslint/eslintrc": "^3"
+    "eslint-plugin-unused-imports": "4.1.4",
+    "prettier": "3.5.1",
+    "stylelint": "^16.14.1",
+    "stylelint-config-clean-order": "7.0.0",
+    "stylelint-config-standard": "^37.0.0",
+    "stylelint-config-standard-scss": "14.0.0",
+    "typescript": "5",
+    "yarn": "1.22.22"
   }
 }
