@@ -1,0 +1,103 @@
+@use "./variables";
+@use "sass:math";
+
+@function strip-unit($value) {
+  @return math.div($value, $value * 0 + 1);
+}
+
+@mixin fluid-type($min-font-size, $max-font-size) {
+  $u1: math.unit(variables.$min-width);
+  $u2: math.unit(variables.$max-width);
+  $u3: math.unit($min-font-size);
+  $u4: math.unit($max-font-size);
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    & {
+      font-size: $min-font-size;
+
+      @media screen and (min-width: variables.$min-width) {
+        font-size: calc(
+          #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} *
+            (
+              (100vw - #{variables.$min-width}) /
+                #{strip-unit(variables.$max-width - variables.$min-width)}
+            )
+        );
+      }
+
+      @media screen and (min-width: variables.$max-width) {
+        font-size: $max-font-size;
+      }
+    }
+  }
+}
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == "xs" {
+    @media (width <= 576px) {
+      @content;
+    }
+  } @else if $breakpoint == "sm" {
+    @media (width >= 576px) {
+      @content;
+    }
+  } @else if $breakpoint == "md" {
+    @media (width >= 768px) {
+      @content;
+    }
+  } @else if $breakpoint == "lg" {
+    @media (width >= 992px) {
+      @content;
+    }
+  } @else if $breakpoint == "xl" {
+    @media (width >= 1200px) {
+      @content;
+    }
+  }
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-center-column {
+  @include flex-center;
+
+  flex-direction: column;
+}
+
+@mixin flex-center-y {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flex-center-x {
+  display: flex;
+  justify-content: center;
+}
+
+@mixin square-size($size) {
+  aspect-ratio: 1;
+  width: $size;
+}
+
+@mixin hover() {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+
+  @media (hover: none) {
+    &:active {
+      @content;
+    }
+  }
+}

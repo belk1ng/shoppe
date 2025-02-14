@@ -6,11 +6,10 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint:ts": "next lint",
-    "fix:ts": "next lint --fix",
+    "lint:ts": "eslint ./src",
+    "fix:ts": "next lint:ts -- --fix",
     "lint:css": "stylelint '**/*.scss'",
-    "fix:css": "stylelint '**/*.scss' --fix",
-    "prepare": "husky"
+    "fix:css": "stylelint '**/*.scss' -- --fix"
   },
   "dependencies": {
     "@bem-react/classname": "1.6.0",
@@ -32,7 +31,8 @@
     "prettier": "3.5.1",
     "stylelint": "^16.14.1",
     "stylelint-config-clean-order": "7.0.0",
-    "stylelint-config-standard": "^37.0.0",
+    "stylelint-config-prettier-scss": "1.0.0",
+    "stylelint-config-standard": "37.0.0",
     "stylelint-config-standard-scss": "14.0.0",
     "typescript": "5",
     "yarn": "1.22.22"
