@@ -7,9 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint:ts": "eslint ./src",
-    "fix:ts": "next lint:ts -- --fix",
+    "fix:ts": "eslint ./src --fix",
     "lint:css": "stylelint '**/*.scss'",
-    "fix:css": "stylelint '**/*.scss' -- --fix"
+    "fix:css": "stylelint '**/*.scss' --fix"
   },
   "dependencies": {
     "@bem-react/classname": "1.6.0",
@@ -24,7 +24,6 @@
     "@types/react": "19",
     "@types/react-dom": "19",
     "@typescript-eslint/parser": "8.24.0",
-    "add": "2.0.6",
     "eslint": "9",
     "eslint-config-next": "15.1.7",
     "eslint-plugin-unused-imports": "4.1.4",

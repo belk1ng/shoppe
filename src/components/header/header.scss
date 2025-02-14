@@ -1,0 +1,11 @@
+@use "src/scss/mixins";
+@use "src/scss/variables";
+
+.header {
+  justify-content: space-between;
+  padding-bottom: 1.5em;
+  border-bottom: 1px solid variables.$stoke-color;
+  font-size: 1rem;
+
+  @include mixins.flex-center-y;
+}
