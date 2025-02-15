@@ -19,7 +19,7 @@ export function Header() {
         />
       </Link>
 
-      <Navigation />
+      <Navigation className={block("navigation")} />
     </header>
   );
 }

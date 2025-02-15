@@ -1,4 +1,5 @@
 import { DM_Sans } from "next/font/google";
+import { Header } from "@/components";
 import "../scss/main.scss";
 
 const dmSans = DM_Sans({
@@ -57,7 +58,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={dmSans.className}>{children}</body>
+      <body className={dmSans.className}>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }

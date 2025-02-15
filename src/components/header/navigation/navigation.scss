@@ -1,9 +1,37 @@
 @use "src/scss/mixins";
+@use "src/scss/variables";
 
 .navigation {
   &__list {
     @include mixins.flex-center-y;
+    @include mixins.respond-to(xs) {
+      &--desktop {
+        display: none;
+      }
+    }
 
     gap: 2.4575em;
+  }
+
+  &__link {
+    color: variables.$black;
+    text-decoration: none;
+  }
+
+  &__separator {
+    width: 1px;
+    height: 20px;
+    border-left: 1px solid variables.$dark-grey;
+  }
+
+  &__indicator {
+    position: absolute;
+    bottom: -1px;
+
+    height: 2px;
+
+    background-color: variables.$black;
+
+    transition: right 0.25s ease;
   }
 }
