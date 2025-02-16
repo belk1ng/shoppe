@@ -12,4 +12,4 @@ class API {
   }
 }
 
-export const api = new API("https://purpleschool.ru/api-demo");
+export const api = new API(process.env.NEXT_PUBLIC_API_BASE_URL);
