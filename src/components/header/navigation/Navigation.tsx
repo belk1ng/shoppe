@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-
-import { cn } from "@/utils/cn";
+import { cn } from "@/lib/cn";
 import type { NavigationItem } from "./types";
 import { useNavigation } from "./useNavigation";
 import "./navigation.scss";

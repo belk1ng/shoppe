@@ -1,11 +1,11 @@
 export const metadata = {
-  title: "Cart – Shoppe",
+  title: "Корзина – Shoppe",
   description:
-    "Review and manage the items in your Shoppe shopping cart before checkout.",
+    "Просматривайте товары в своей корзине покупок и управляйте ими перед оформлением заказа.",
   openGraph: {
-    title: "Check your cart – Shoppe",
+    title: "Проверь свою корзину – Shoppe",
     description:
-      "Review and manage the items in your Shoppe shopping cart before checkout.",
+      "Просматривайте товары в своей корзине покупок и управляйте ими перед оформлением заказа.",
     url: "https://shoppe.com/cart",
   },
 };

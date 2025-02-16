@@ -24,7 +24,7 @@ export const useNavigation = (items: NavigationItem[]) => {
     [pathname]
   );
 
-  const linksRef = useRef<(HTMLAnchorElement | null)[]>([]);
+  const linksRef = useRef<Nullable<HTMLAnchorElement>[]>([]);
 
   useEffect(() => {
     if (linksRef.current?.length) {

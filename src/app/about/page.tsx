@@ -1,11 +1,11 @@
 export const metadata = {
-  title: "About Us – Shoppe",
+  title: "О нас – Shoppe",
   description:
-    "Learn more about Shoppe, your trusted online store for high-quality jewelry and accessories.",
+    "Узнайте больше о Shoppe, вашем надежном интернет-магазине высококачественных ювелирных изделий и аксессуаров.",
   openGraph: {
-    title: "About Us – Shoppe",
+    title: "О нас – Shoppe",
     description:
-      "Learn more about Shoppe, your trusted online store for high-quality jewelry and accessories.",
+      "Узнайте больше о Shoppe, вашем надежном интернет-магазине высококачественных ювелирных изделий и аксессуаров.",
     url: "https://shoppe.com/about-us",
   },
 };

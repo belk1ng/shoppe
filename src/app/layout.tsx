@@ -13,7 +13,9 @@ export const viewport = {
 
 export const metadata = {
   openGraph: {
+    siteName: "Shoppe – мы делаем шикарные украшения для вас!",
     type: "website",
+    locale: "ru_RU",
   },
   icons: {
     icon: [

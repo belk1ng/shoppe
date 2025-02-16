@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { cn } from "@/utils/cn";
+import { cn } from "@/lib/cn";
 import { Navigation } from "./navigation";
 import "./header.scss";
 

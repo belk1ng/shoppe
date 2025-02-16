@@ -1,11 +1,11 @@
 export const metadata = {
-  title: "Browse Our Collection – Shoppe",
+  title: "Каталог – Shoppe",
   description:
-    "Explore our wide selection of beautiful jewelry and accessories in the Shoppe catalog.",
+    "Ознакомьтесь с нашим широким выбором красивых украшений и аксессуаров в каталоге Shoppe.",
   openGraph: {
-    title: "Catalog – Shoppe",
+    title: "Зацени нашу новую коллекцию – Shoppe",
     description:
-      "Explore our wide selection of beautiful jewelry and accessories in the Shoppe catalog.",
+      "Ознакомьтесь с нашим широким выбором красивых украшений и аксессуаров в каталоге Shoppe.",
     url: "https://shoppe.com/catalog",
   },
 };

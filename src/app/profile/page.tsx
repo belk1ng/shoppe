@@ -1,9 +1,9 @@
 export const metadata = {
-  title: "Your profile – Shoppe",
+  title: "Профиль – Shoppe",
   description:
     "Manage your Shoppe account settings, including personal information and preferences.",
   openGraph: {
-    title: "Your Profile | Shoppe",
+    title: "Твой профиль – Shoppe",
     description:
       "Manage your Shoppe account settings, including personal information and preferences.",
     url: "https://shoppe.com/profile",

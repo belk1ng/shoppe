@@ -1,11 +1,11 @@
 export const metadata = {
-  title: "Your favorite accessories – Shoppe",
+  title: "Избранное – Shoppe",
   description:
-    "Save your favorite jewelry and accessories for quick access in your Shoppe account.",
+    "Сохраните ваши любимые украшения и аксессуары для быстрого доступа в вашем аккаунте Shoppe.",
   openGraph: {
-    title: "Favorites – Shoppe",
+    title: "Ваши избранные аксессуары – Shoppe",
     description:
-      "Save your favorite jewelry and accessories for quick access in your Shoppe account.",
+      "Сохраните ваши любимые украшения и аксессуары для быстрого доступа в вашем аккаунте Shoppe.",
     url: "https://shoppe.com/favorites",
   },
 };
