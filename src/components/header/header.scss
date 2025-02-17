@@ -5,11 +5,21 @@
   position: relative;
 
   justify-content: space-between;
-
-  padding-bottom: 1.5em;
   border-bottom: 1px solid variables.$stoke-color;
 
   font-size: 1rem;
+
+  @include mixins.respond-to(xs) {
+    padding-bottom: 0.25rem;
+  }
+
+  @include mixins.respond-to(sm) {
+    padding-bottom: 0.5rem;
+  }
+
+  @include mixins.respond-to(lg) {
+    padding-bottom: 1.666rem;
+  }
 
   @include mixins.flex-center-y;
 

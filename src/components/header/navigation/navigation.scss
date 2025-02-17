@@ -32,6 +32,8 @@
 
     background-color: variables.$black;
 
-    transition: right 0.25s ease;
+    transition:
+      right 0.25s ease,
+      width 0.25s ease;
   }
 }

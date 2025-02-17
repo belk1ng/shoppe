@@ -1,9 +1,11 @@
 import { DM_Sans } from "next/font/google";
+import type { ReactNode } from "react";
 import { Header } from "@/components";
 import "../scss/main.scss";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const viewport = {
@@ -56,11 +58,12 @@ export const metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <html lang="en">
       <body className={dmSans.className}>
+        {/*TODO: Add linear progress*/}
         <Header />
         {children}
       </body>

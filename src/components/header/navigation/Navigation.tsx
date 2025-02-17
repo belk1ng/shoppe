@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Cart, Favorite, Profile } from "@/assets/icons";
 import { cn } from "@/lib/cn";
 import type { NavigationItem } from "./types";
 import { useNavigation } from "./useNavigation";
@@ -13,12 +14,12 @@ interface NavigationProps {
 const ITEMS: NavigationItem[] = [
   {
     type: "link",
-    label: "Catalog",
+    label: "Каталог",
     path: "/catalog",
   },
   {
     type: "link",
-    label: "About",
+    label: "О нас",
     path: "/about",
   },
   {
@@ -26,17 +27,20 @@ const ITEMS: NavigationItem[] = [
   },
   {
     type: "link",
-    label: "Cart",
+    ariaLabel: "Корзина",
+    label: <Cart aria-hidden={true} />,
     path: "/cart",
   },
   {
     type: "link",
-    label: "Favorite",
+    ariaLabel: "Избранные товары",
+    label: <Favorite aria-hidden={true} />,
     path: "/favorite",
   },
   {
     type: "link",
-    label: "Profile",
+    ariaLabel: "Профиль",
+    label: <Profile aria-hidden={true} />,
     path: "/profile",
   },
 ];
@@ -67,6 +71,7 @@ export function Navigation({ className }: NavigationProps) {
             <li className={block("item")} key={item.path ?? index} role="none">
               <Link
                 aria-current={isCurrentPage(item) ? "page" : undefined}
+                aria-label={item.ariaLabel}
                 className={block("link")}
                 href={item.path}
                 onClick={() => handleClick(index)}

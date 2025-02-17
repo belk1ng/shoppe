@@ -5,6 +5,7 @@ export type NavigationItem =
       type: "link";
       path: string;
       label: ReactNode;
+      ariaLabel?: string;
     }
   | {
       type: "separator";
