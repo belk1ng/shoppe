@@ -1,0 +1,28 @@
+@use "src/scss/mixins";
+@use "src/scss/variables";
+
+.home {
+  &__heading {
+    @include mixins.flex-center-y;
+
+    justify-content: space-between;
+    padding-block: 2rem;
+  }
+
+  &__title {
+    font-size: 2.0625rem;
+  }
+
+  &__link {
+    font-size: 1.25rem;
+    color: variables.$golden;
+    text-decoration: none;
+  }
+
+  &__products {
+    display: grid;
+    grid-gap: 4em 2em;
+    grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+    font-size: 1.25rem;
+  }
+}

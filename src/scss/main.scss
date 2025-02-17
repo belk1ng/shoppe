@@ -57,8 +57,12 @@ html:focus-within {
   scroll-behavior: smooth;
 }
 
-a:not([class]) {
-  text-decoration-skip-ink: auto;
+a {
+  font: inherit;
+
+  &:not([class]) {
+    text-decoration-skip-ink: auto;
+  }
 }
 
 img,

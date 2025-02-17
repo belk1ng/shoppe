@@ -1,0 +1,26 @@
+@use "src/scss/variables";
+@use "src/scss/mixins";
+
+.productCard {
+  @include mixins.flex-column;
+
+  gap: 0.8em;
+  font-size: 1em;
+  color: variables.$black;
+
+  &__image {
+    @include mixins.square-size(100%);
+
+    border-radius: 0.4em;
+  }
+
+  &__link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  &__price {
+    font-weight: 500;
+    color: variables.$golden;
+  }
+}

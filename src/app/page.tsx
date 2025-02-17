@@ -1,4 +1,8 @@
+import Link from "next/link";
+import { ProductCard } from "@/components/product-card";
 import { api } from "@/lib/api";
+import { cn } from "@/lib/cn";
+import "./home.scss";
 
 export const metadata = {
   title: "Ваш ювелирный рай – Shoppe",
@@ -24,13 +28,29 @@ const getRecentProducts = async () => {
   return response.products;
 };
 
+const block = cn("home");
+
 export default async function Home() {
   const products = await getRecentProducts();
 
   return (
-    <main>
-      <h1>Home page</h1>
-      <pre>{JSON.stringify(products, null, 2)}</pre>
+    <main className={block()}>
+      <h1 className="visuallyHidden">Главная страница</h1>
+
+      <section>
+        <header className={block("heading")}>
+          <h2 className={block("title")}>Последние поступления</h2>
+          <Link className={block("link")} href="/catalog">
+            Все
+          </Link>
+        </header>
+
+        <div className={block("products")}>
+          {products.map((product) => (
+            <ProductCard key={product.sku} product={product} />
+          ))}
+        </div>
+      </section>
     </main>
   );
 }
