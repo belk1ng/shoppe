@@ -1,0 +1,8 @@
+@use "src/scss/mixins";
+
+.notFound {
+  @include mixins.flex-center-column;
+
+  width: 100%;
+  height: 100%;
+}

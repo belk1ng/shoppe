@@ -59,6 +59,7 @@ html:focus-within {
 
 a {
   font: inherit;
+  color: inherit;
 
   &:not([class]) {
     text-decoration-skip-ink: auto;
