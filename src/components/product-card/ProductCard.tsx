@@ -7,14 +7,17 @@ import "./product-card.scss";
 export interface ProductCardProps {
   product: Product;
   className?: string;
+  heading?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 }
 
 const block = cn("productCard");
 
-export function ProductCard({ product, className }: ProductCardProps) {
+export function ProductCard({ product, className, heading }: ProductCardProps) {
+  const Heading = heading ?? "h3";
+
   return (
     <article className={block("", [className])}>
-      <h3 className="visuallyHidden">{product.name}</h3>
+      <Heading className="visuallyHidden">{product.name}</Heading>
 
       <Image
         alt="Product image"

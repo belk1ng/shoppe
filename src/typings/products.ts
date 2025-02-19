@@ -53,7 +53,7 @@ export type SkuResponse = Product;
 export type ReviewBody = {
   name: string;
   email: string;
-  raring: number;
+  rating: number;
   review: string;
 };
 
