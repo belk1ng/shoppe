@@ -1,2 +1,2 @@
 yarn lint:ts
-yarn list:css
+yarn lint:css

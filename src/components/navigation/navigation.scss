@@ -5,9 +5,8 @@
   color: variables.$black;
 
   &__list {
-    @include mixins.flex-center-y;
-
     gap: 2.4575em;
+    @include mixins.flex-center-y;
   }
 
   &__link {

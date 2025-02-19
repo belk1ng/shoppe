@@ -2,16 +2,14 @@
 @use "src/scss/mixins";
 
 .productCard {
-  @include mixins.flex-column;
-
   gap: 0.8em;
   font-size: 1em;
   color: variables.$black;
+  @include mixins.flex-column;
 
   &__image {
-    @include mixins.square-size(100%);
-
     border-radius: 0.4em;
+    @include mixins.square-size(100%);
   }
 
   &__link {

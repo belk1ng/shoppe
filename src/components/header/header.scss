@@ -7,6 +7,8 @@
   border-block-end: 1px solid variables.$stoke-color;
   font-size: 1rem;
 
+  @include mixins.flex-center-y;
+
   @include mixins.respond-to(xs) {
     padding-block-end: 0.25rem;
   }
@@ -18,8 +20,6 @@
   @include mixins.respond-to(lg) {
     padding-block-end: 1.666rem;
   }
-
-  @include mixins.flex-center-y;
 
   @include mixins.respond-to(xs) {
     border-block-end: none;
