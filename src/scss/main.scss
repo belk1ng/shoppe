@@ -25,6 +25,11 @@ html {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  max-width: 1580px;
+  margin: 0 auto;
+
   @include mixins.respond-to(xs) {
     padding: 0.25rem 1.25rem;
   }
@@ -36,6 +41,10 @@ body {
   @include mixins.respond-to(lg) {
     padding: 1.666rem 8rem;
   }
+}
+
+main {
+  flex: 1;
 }
 
 *,

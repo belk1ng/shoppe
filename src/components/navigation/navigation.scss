@@ -2,26 +2,23 @@
 @use "src/scss/variables";
 
 .navigation {
+  color: variables.$black;
+
   &__list {
     @include mixins.flex-center-y;
-    @include mixins.respond-to(xs) {
-      &--desktop {
-        display: none;
-      }
-    }
 
     gap: 2.4575em;
   }
 
   &__link {
-    color: variables.$black;
+    color: inherit;
     text-decoration: none;
   }
 
   &__separator {
     width: 1px;
     height: 20px;
-    border-left: 1px solid variables.$dark-grey;
+    border-inline-start: 1px solid variables.$dark-grey;
   }
 
   &__indicator {

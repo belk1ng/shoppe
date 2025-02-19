@@ -1,11 +1,12 @@
-import { DM_Sans } from "next/font/google";
+import { Open_Sans } from "next/font/google";
 import type { ReactNode } from "react";
 import { Header } from "@/components";
 import "../scss/main.scss";
+import { Footer } from "@/components/footer";
 import { ProgressBar } from "@/components/progress-bar";
 
-const dmSans = DM_Sans({
-  subsets: ["latin"],
+const openSans = Open_Sans({
+  subsets: ["latin", "cyrillic"],
   display: "swap",
 });
 
@@ -63,10 +64,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={dmSans.className}>
+      <body className={openSans.className}>
         <ProgressBar>
           <Header />
           {children}
+          <Footer />
         </ProgressBar>
       </body>
     </html>

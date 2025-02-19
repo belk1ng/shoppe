@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { PatchedLink } from "@/components/patched-link";
 import { ProductCard } from "@/components/product-card";
 import { api } from "@/lib/api";
 import { cn } from "@/lib/cn";
@@ -40,9 +40,9 @@ export default async function Home() {
       <section>
         <header className={block("heading")}>
           <h2 className={block("title")}>Последние поступления</h2>
-          <Link className={block("link")} href="/catalog">
+          <PatchedLink className={block("link")} href="/catalog">
             Все
-          </Link>
+          </PatchedLink>
         </header>
 
         <div className={block("products")}>

@@ -1,6 +1,5 @@
 "use client";
 
-import { Cart, Favorite, Profile } from "@/assets/icons";
 import { PatchedLink } from "@/components/patched-link";
 import { cn } from "@/lib/cn";
 import type { NavigationItem } from "./types";
@@ -9,52 +8,19 @@ import "./navigation.scss";
 
 interface NavigationProps {
   className?: string;
+  items: NavigationItem[];
 }
-
-const ITEMS: NavigationItem[] = [
-  {
-    type: "link",
-    label: "Каталог",
-    path: "/catalog",
-  },
-  {
-    type: "link",
-    label: "О нас",
-    path: "/about",
-  },
-  {
-    type: "separator",
-  },
-  {
-    type: "link",
-    ariaLabel: "Корзина",
-    label: <Cart aria-hidden={true} />,
-    path: "/cart",
-  },
-  {
-    type: "link",
-    ariaLabel: "Избранные товары",
-    label: <Favorite aria-hidden={true} />,
-    path: "/favorite",
-  },
-  {
-    type: "link",
-    ariaLabel: "Профиль",
-    label: <Profile aria-hidden={true} />,
-    path: "/profile",
-  },
-];
 
 const block = cn("navigation");
 
-export function Navigation({ className }: NavigationProps) {
+export function Navigation({ className, items }: NavigationProps) {
   const { linksRef, activeIndex, isCurrentPage, handleClick, handleKeyDown } =
-    useNavigation(ITEMS);
+    useNavigation(items);
 
   return (
     <nav className={block("", [className])}>
-      <ul className={block("list", { desktop: true })} role="menubar">
-        {ITEMS.map((item, index) => {
+      <ul className={block("list")} role="menubar">
+        {items.map((item, index) => {
           if (item.type === "separator") {
             return (
               <li

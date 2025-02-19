@@ -1,5 +1,5 @@
 import "./not-found.scss";
-import Link from "next/link";
+import { PatchedLink } from "@/components/patched-link";
 import { cn } from "@/lib/cn";
 
 const block = cn("notFound");
@@ -12,7 +12,9 @@ export default function NotFound() {
         Страница не найдена, попробуйте перейти на главную страницу
       </h2>
 
-      <Link href="/">Главная страница</Link>
+      <PatchedLink className={block("link")} href="/">
+        Главная страница
+      </PatchedLink>
     </main>
   );
 }

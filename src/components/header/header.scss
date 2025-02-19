@@ -4,24 +4,30 @@
 .header {
   position: relative;
   justify-content: space-between;
-  border-bottom: 1px solid variables.$stoke-color;
+  border-block-end: 1px solid variables.$stoke-color;
   font-size: 1rem;
 
   @include mixins.respond-to(xs) {
-    padding-bottom: 0.25rem;
+    padding-block-end: 0.25rem;
   }
 
   @include mixins.respond-to(sm) {
-    padding-bottom: 0.5rem;
+    padding-block-end: 0.5rem;
   }
 
   @include mixins.respond-to(lg) {
-    padding-bottom: 1.666rem;
+    padding-block-end: 1.666rem;
   }
 
   @include mixins.flex-center-y;
 
   @include mixins.respond-to(xs) {
-    border-bottom: none;
+    border-block-end: none;
+  }
+
+  &__navigation {
+    @include mixins.respond-to(xs) {
+      display: none;
+    }
   }
 }

@@ -1,0 +1,47 @@
+@use "src/scss/mixins";
+@use "src/scss/variables";
+
+.footer {
+  @include mixins.flex-center-y;
+
+  justify-content: space-between;
+  border-block-start: 1px solid variables.$stoke-color;
+  font-size: 1rem;
+
+  @include mixins.respond-to(xs) {
+    padding-block-start: 0.25rem;
+  }
+
+  @include mixins.respond-to(sm) {
+    padding-block-start: 0.5rem;
+  }
+
+  @include mixins.respond-to(lg) {
+    padding-block-start: 1.666rem;
+  }
+
+  @include mixins.respond-to(xs) {
+    border-block-start: none;
+  }
+
+  @include mixins.respond-to(xs) {
+    @include mixins.flex-column;
+
+    gap: 2.5em;
+    align-items: start;
+  }
+
+  &__navigation {
+    color: variables.$dark-grey;
+    text-transform: uppercase;
+
+    & .navigation__list {
+      @include mixins.respond-to(xs) {
+        @include mixins.flex-column;
+
+        gap: 0.75em;
+        align-items: start;
+      }
+    }
+  }
+}
