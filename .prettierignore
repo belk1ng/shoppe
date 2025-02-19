@@ -1,0 +1,12 @@
+node_modules
+.next
+.husky
+coverage
+stories
+storybook-static
+*.log
+playwright-report
+.nyc_output
+test-results
+junit.xml
+docs

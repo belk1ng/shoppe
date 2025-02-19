@@ -1,2 +1,1 @@
-yarn fix:ts
-yarn fix:css
+yarn lint-staged
