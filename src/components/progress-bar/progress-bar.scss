@@ -1,0 +1,13 @@
+@use "src/scss/variables";
+
+.progressBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  height: 4px;
+
+  background-color: variables.$golden;
+
+  transition: width 300ms ease-in-out;
+}

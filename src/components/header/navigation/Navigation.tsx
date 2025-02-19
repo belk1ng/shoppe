@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { Cart, Favorite, Profile } from "@/assets/icons";
+import { PatchedLink } from "@/components/patched-link";
 import { cn } from "@/lib/cn";
 import type { NavigationItem } from "./types";
 import { useNavigation } from "./useNavigation";
@@ -69,7 +69,7 @@ export function Navigation({ className }: NavigationProps) {
           const activeTabIndex = activeIndex === -1 ? 0 : activeIndex;
           return (
             <li className={block("item")} key={item.path ?? index} role="none">
-              <Link
+              <PatchedLink
                 aria-current={isCurrentPage(item) ? "page" : undefined}
                 aria-label={item.ariaLabel}
                 className={block("link")}
@@ -83,7 +83,7 @@ export function Navigation({ className }: NavigationProps) {
                 tabIndex={index === activeTabIndex ? 0 : -1}
               >
                 {item.label}
-              </Link>
+              </PatchedLink>
             </li>
           );
         })}

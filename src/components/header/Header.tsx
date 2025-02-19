@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { PatchedLink } from "@/components/patched-link";
 import { cn } from "@/lib/cn";
 import { Navigation } from "./navigation";
 import "./header.scss";
@@ -9,7 +9,11 @@ const block = cn("header");
 export function Header() {
   return (
     <header className={block()}>
-      <Link aria-label="Go to main page" className={block("logo")} href="/">
+      <PatchedLink
+        aria-label="Go to main page"
+        className={block("logo")}
+        href="/"
+      >
         <Image
           alt="Shop logo"
           aria-hidden={true}
@@ -17,7 +21,7 @@ export function Header() {
           src="/logo.svg"
           width={129}
         />
-      </Link>
+      </PatchedLink>
 
       <Navigation className={block("navigation")} />
     </header>

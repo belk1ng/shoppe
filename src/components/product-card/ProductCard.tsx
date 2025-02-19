@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { PatchedLink } from "@/components/patched-link";
 import { cn } from "@/lib/cn";
 import type { Product } from "@/typings/products";
 import "./product-card.scss";
@@ -27,9 +27,9 @@ export function ProductCard({ product, className, heading }: ProductCardProps) {
         width={377}
       />
 
-      <Link className={block("link")} href={`/catalog/${product.sku}`}>
+      <PatchedLink className={block("link")} href={`/catalog/${product.sku}`}>
         {product.name}
-      </Link>
+      </PatchedLink>
       <p className={block("price")}>$ {product.price.toFixed(2)}</p>
     </article>
   );

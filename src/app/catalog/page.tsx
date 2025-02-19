@@ -1,3 +1,10 @@
+import { api } from "@/lib/api";
+import type { ProductsBody } from "@/typings/products";
+
+interface CatalogPageProps {
+  searchParams: Promise<Partial<ProductsBody>>;
+}
+
 export const metadata = {
   title: "Каталог – Shoppe",
   description:
@@ -10,6 +17,15 @@ export const metadata = {
   },
 };
 
-export default function Catalog() {
-  return <h1>Catalog page</h1>;
+export default async function Catalog({ searchParams }: CatalogPageProps) {
+  const { limit = 6, offset = 0, ...params } = await searchParams;
+
+  const products = await api.products.getProducts({ limit, offset, ...params });
+
+  return (
+    <main>
+      <h1>Catalog page</h1>
+      <pre>{JSON.stringify(products, null, 2)}</pre>
+    </main>
+  );
 }

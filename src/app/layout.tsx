@@ -2,6 +2,7 @@ import { DM_Sans } from "next/font/google";
 import type { ReactNode } from "react";
 import { Header } from "@/components";
 import "../scss/main.scss";
+import { ProgressBar } from "@/components/progress-bar";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -63,9 +64,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={dmSans.className}>
-        {/*TODO: Add linear progress*/}
-        <Header />
-        {children}
+        <ProgressBar>
+          <Header />
+          {children}
+        </ProgressBar>
       </body>
     </html>
   );
