@@ -8,7 +8,7 @@ export interface FilterFormProps {
 
 const block = cn("productsFilterForm");
 
-export const FilterForm = ({ className }: FilterFormProps) => {
+export function FilterForm({ className }: FilterFormProps) {
   return (
     <form className={block("", [className])} role="search">
       <Input
@@ -19,4 +19,4 @@ export const FilterForm = ({ className }: FilterFormProps) => {
       />
     </form>
   );
-};
+}

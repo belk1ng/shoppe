@@ -64,6 +64,10 @@ const eslintConfig = [
       "react/react-in-jsx-scope": "off",
       "react/jsx-one-expression-per-line": "off",
       "react/prop-types": "off",
+      "react/function-component-definition": [
+        2,
+        { namedComponents: "function-declaration" },
+      ],
       "import/order": [
         "error",
         {

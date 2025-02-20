@@ -1,4 +1,3 @@
-// TODO: Choose one way to define components
 import { Navigation, type NavigationItem } from "@/components/navigation";
 import { cn } from "@/lib/cn";
 import "./footer.scss";
@@ -23,7 +22,7 @@ const ITEMS: NavigationItem[] = [
   },
 ];
 
-export const Footer = () => {
+export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -32,4 +31,4 @@ export const Footer = () => {
       <p>&copy; {currentYear} Shoppe</p>
     </footer>
   );
-};
+}

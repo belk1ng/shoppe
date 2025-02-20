@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from "react";
 
-export const Search = (props: HTMLAttributes<HTMLOrSVGElement>) => {
+export function Search(props: HTMLAttributes<HTMLOrSVGElement>) {
   return (
     <svg
       fill="none"
@@ -22,4 +22,4 @@ export const Search = (props: HTMLAttributes<HTMLOrSVGElement>) => {
       />
     </svg>
   );
-};
+}
