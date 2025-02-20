@@ -39,12 +39,12 @@ export function createSafeContext<ContextValue>(errorMessage: string) {
     return ctx;
   };
 
-  const Provider = ({
+  function Provider({
     value,
     children,
-  }: PropsWithChildren<{ value: ContextValue }>) => (
-    <Context.Provider value={value}>{children}</Context.Provider>
-  );
+  }: PropsWithChildren<{ value: ContextValue }>) {
+  return <Context.Provider value={value}>{children}</Context.Provider>
+}
 
   return [Provider, useSafeContext] as const;
 }

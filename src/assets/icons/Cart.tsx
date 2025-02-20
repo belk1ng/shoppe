@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from "react";
 
-export const Cart = (props: HTMLAttributes<HTMLOrSVGElement>) => {
+export function Cart(props: HTMLAttributes<HTMLOrSVGElement>) {
   return (
     <svg
       fill="none"
@@ -24,4 +24,4 @@ export const Cart = (props: HTMLAttributes<HTMLOrSVGElement>) => {
       />
     </svg>
   );
-};
+}
