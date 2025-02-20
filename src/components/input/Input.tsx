@@ -12,14 +12,14 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 const block = cn("input");
 
-export const Input = ({
+export function Input({
   id,
   className,
   label,
   startIcon,
   endIcon,
   ...props
-}: InputProps) => {
+}: InputProps) {
   const _id = useId();
 
   return (
@@ -32,4 +32,4 @@ export const Input = ({
       {endIcon}
     </div>
   );
-};
+}
