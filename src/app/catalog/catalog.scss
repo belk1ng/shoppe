@@ -1,0 +1,42 @@
+@use "src/scss/mixins";
+
+.catalog {
+  margin-block-end: 10rem;
+  font-size: 1rem;
+
+  &__container {
+    display: grid;
+    grid-gap: 2em;
+    grid-template-areas: "head" "filter" "content";
+    grid-template-columns: 1fr;
+
+    @include mixins.respond-to(md) {
+      grid-gap: 0 2em;
+      grid-template-areas:
+        "head head head head"
+        "filter content content content";
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &__heading {
+    grid-area: head;
+    padding-block: 2em;
+  }
+
+  &__title {
+    font-size: 1.625em;
+    font-weight: 500;
+  }
+
+  &__filter {
+    grid-area: filter;
+  }
+
+  &__content {
+    display: grid;
+    grid-area: content;
+    grid-gap: 4.375em 1.5em;
+    grid-template-columns: repeat(auto-fit, minmax(18em, 1fr));
+  }
+}
