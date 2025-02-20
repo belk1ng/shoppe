@@ -1,9 +1,9 @@
 import { Open_Sans } from "next/font/google";
 import type { ReactNode } from "react";
 import { Header } from "@/components";
-import "../scss/main.scss";
 import { Footer } from "@/components/footer";
 import { ProgressBar } from "@/components/progress-bar";
+import "../scss/main.scss";
 
 const openSans = Open_Sans({
   subsets: ["latin", "cyrillic"],
