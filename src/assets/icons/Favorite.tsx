@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from "react";
 
-export const Favorite = (props: HTMLAttributes<HTMLOrSVGElement>) => {
+export function Favorite(props: HTMLAttributes<HTMLOrSVGElement>) {
   return (
     <svg
       fill="none"
@@ -16,4 +16,4 @@ export const Favorite = (props: HTMLAttributes<HTMLOrSVGElement>) => {
       />
     </svg>
   );
-};
+}

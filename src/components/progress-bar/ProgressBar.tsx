@@ -12,7 +12,7 @@ const [ProgressBarProvider, useProgressBar] = createSafeContext<
 
 const block = cn("progressBar");
 
-export const ProgressBar = ({ children }: PropsWithChildren) => {
+export function ProgressBar({ children }: PropsWithChildren) {
   const progress = useProgress();
 
   return (
@@ -31,6 +31,6 @@ export const ProgressBar = ({ children }: PropsWithChildren) => {
       {children}
     </ProgressBarProvider>
   );
-};
+}
 
 export { useProgressBar };

@@ -1,6 +1,6 @@
 import type { HTMLAttributes } from "react";
 
-export const Profile = (props: HTMLAttributes<HTMLOrSVGElement>) => {
+export function Profile(props: HTMLAttributes<HTMLOrSVGElement>) {
   return (
     <svg
       fill="none"
@@ -22,4 +22,4 @@ export const Profile = (props: HTMLAttributes<HTMLOrSVGElement>) => {
       />
     </svg>
   );
-};
+}
