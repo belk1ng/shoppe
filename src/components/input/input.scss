@@ -2,7 +2,7 @@
 @use "src/scss/variables";
 
 .input {
-  border-block-end: 1px solid variables.$stoke-color;
+  border-block-end: 1px solid variables.$stroke-color;
   font-size: 1rem;
   transition: border-color 0.25s ease-in-out;
   @include mixins.flex-center-y;

@@ -3,11 +3,11 @@
 
 html,
 body {
-  scroll-behavior: smooth;
   min-height: 100dvh;
 }
 
 html {
+  scroll-behavior: smooth !important;
   color: variables.$black;
   background-color: variables.$white;
 

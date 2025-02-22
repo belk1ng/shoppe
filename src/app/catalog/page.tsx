@@ -1,9 +1,10 @@
+import { ProductCard } from "@/components/product-card";
 import { api } from "@/lib/api";
 import { cn } from "@/lib/cn";
 import type { ProductsBody } from "@/typings/products";
 import { FilterForm } from "./components/filter-form";
 import { FilterProvider } from "./components/filter-provider";
-import { ProductsList } from "./components/products-list";
+import { ProductsPagination } from "./components/products-pagination";
 import "./catalog.scss";
 
 interface CatalogPageProps {
@@ -25,16 +26,19 @@ export const metadata = {
 const block = cn("catalog");
 
 export default async function Catalog({ searchParams }: CatalogPageProps) {
-  const [{ limit, offset, ...otherParams }, filtersConfig] = await Promise.all([
-    searchParams,
-    api.products.getFilter(),
-  ]);
+  const { limit, offset, ...otherSearchParams } = await searchParams;
 
   const searchParamsWithDefaults = {
-    limit: limit || 6,
-    offset: offset || 0,
-    ...otherParams,
+    limit: Number(limit) || 6,
+    offset: Number(offset) || 0,
+    ...otherSearchParams,
   };
+
+  // TODO: Add hoc for catching errors
+  const [filtersConfig, productsResponse] = await Promise.all([
+    api.products.getFilter(),
+    api.products.getProducts(searchParamsWithDefaults),
+  ]);
 
   return (
     <main className={block()}>
@@ -49,9 +53,19 @@ export default async function Catalog({ searchParams }: CatalogPageProps) {
             filterConfig={filtersConfig}
           />
 
+          {/*// TODO: Handle not found records*/}
           <div className={block("content")}>
-            <ProductsList searchParams={searchParamsWithDefaults} />
+            {productsResponse.products.map((product, index) => (
+              <ProductCard heading="h2" key={index} product={product} />
+            ))}
           </div>
+
+          <ProductsPagination
+            className={block("pagination")}
+            limit={searchParamsWithDefaults.limit}
+            offset={searchParamsWithDefaults.offset}
+            totalCount={productsResponse.totalProducts}
+          />
         </FilterProvider>
       </section>
     </main>

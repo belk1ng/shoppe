@@ -20,7 +20,7 @@ export function FilterForm({ className, filterConfig }: FilterFormProps) {
 
   const handleFormChange = (event: SyntheticEvent) => {
     const { name, value } = event.target as HTMLInputElement;
-    updateFilters({ [name]: value });
+    updateFilters({ [name]: value, offset: 0 });
   };
 
   return (
