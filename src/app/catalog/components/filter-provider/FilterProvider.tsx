@@ -12,13 +12,13 @@ import { createSafeContext } from "@/lib/createSafeContext";
 import type { ProductsBody } from "@/typings/products";
 
 interface FilterContextType {
-  filters: Partial<ProductsBody>;
+  filters: ProductsBody;
   isPending: boolean;
   updateFilters: Dispatch<Partial<ProductsBody>>;
 }
 
 interface FilterProviderProps {
-  searchParams: Partial<ProductsBody>;
+  searchParams: ProductsBody;
 }
 
 const [FilterContextProvider, useFiltersContext] =
