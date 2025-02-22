@@ -3,7 +3,7 @@
 
 .footer {
   justify-content: space-between;
-  border-block-start: 1px solid variables.$stoke-color;
+  border-block-start: 1px solid variables.$stroke-color;
   font-size: 1rem;
 
   @include mixins.flex-center-y;

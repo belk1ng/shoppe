@@ -1,0 +1,45 @@
+@use "src/scss/mixins";
+@use "src/scss/variables";
+
+.pagination {
+  width: 100%;
+  font-size: 0.875rem;
+  @include mixins.flex-center-y;
+
+  &__list {
+    gap: 0.5715em;
+    @include mixins.flex-center;
+  }
+
+  &__button {
+    border: 1px solid variables.$stroke-color;
+    border-radius: 0.2857em;
+
+    color: variables.$black;
+
+    background-color: variables.$white;
+
+    transition: all 0.25s ease-in-out;
+
+    @include mixins.square-size(2.875em);
+
+    &--active {
+      border-color: variables.$black;
+      color: variables.$white;
+      background-color: variables.$black;
+    }
+
+    &:not([disabled]) {
+      cursor: pointer;
+    }
+
+    &[disabled] {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    &:hover:not(&--active, [disabled]) {
+      border-color: variables.$black;
+    }
+  }
+}
