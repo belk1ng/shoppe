@@ -1,8 +1,9 @@
-import { ProductCard } from "@/components/product-card";
 import { api } from "@/lib/api";
 import { cn } from "@/lib/cn";
 import type { ProductsBody } from "@/typings/products";
 import { FilterForm } from "./components/filter-form";
+import { FilterProvider } from "./components/filter-provider";
+import { ProductsList } from "./components/products-list";
 import "./catalog.scss";
 
 interface CatalogPageProps {
@@ -24,9 +25,16 @@ export const metadata = {
 const block = cn("catalog");
 
 export default async function Catalog({ searchParams }: CatalogPageProps) {
-  const { limit = 6, offset = 0, ...params } = await searchParams;
+  const [{ limit, offset, ...otherParams }, filtersConfig] = await Promise.all([
+    searchParams,
+    api.products.getFilter(),
+  ]);
 
-  const products = await api.products.getProducts({ limit, offset, ...params });
+  const searchParamsWithDefaults = {
+    limit: limit || 6,
+    offset: offset || 0,
+    ...otherParams,
+  };
 
   return (
     <main className={block()}>
@@ -35,13 +43,16 @@ export default async function Catalog({ searchParams }: CatalogPageProps) {
           <h1 className={block("title")}>Каталог товаров</h1>
         </header>
 
-        <FilterForm className={block("filter")} />
+        <FilterProvider searchParams={searchParamsWithDefaults}>
+          <FilterForm
+            className={block("filter")}
+            filterConfig={filtersConfig}
+          />
 
-        <div className={block("content")}>
-          {products.products.map((product, index) => (
-            <ProductCard key={index} product={product} />
-          ))}
-        </div>
+          <div className={block("content")}>
+            <ProductsList searchParams={searchParamsWithDefaults} />
+          </div>
+        </FilterProvider>
       </section>
     </main>
   );
