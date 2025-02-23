@@ -1,79 +1,41 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import {
-  type Dispatch,
-  type PropsWithChildren,
-  useMemo,
-  useOptimistic,
-  useTransition,
-} from "react";
+import { type Dispatch, type PropsWithChildren, useMemo } from "react";
 import { createSafeContext } from "@/lib/createSafeContext";
+import { useFilter } from "@/lib/hooks/useFilter";
 import type { ProductsBody } from "@/typings/products";
 
-interface FilterContextType {
+interface ProductsFilterProviderValue {
   filters: ProductsBody;
   isPending: boolean;
-  updateFilters: Dispatch<Partial<ProductsBody>>;
+  updateFilter: Dispatch<Partial<ProductsBody>>;
 }
 
-interface FilterProviderProps {
+interface ProductsFilterProviderProps {
   searchParams: ProductsBody;
 }
 
-const [FilterContextProvider, useFiltersContext] =
-  createSafeContext<FilterContextType>("FilterProvider not found");
+const [ProductsFilterProvider, useProductsFilter] =
+  createSafeContext<ProductsFilterProviderValue>("FilterProvider not found");
 
 export function FilterProvider({
   children,
   searchParams,
-}: PropsWithChildren<FilterProviderProps>) {
-  const router = useRouter();
-
-  const [isPending, startTransition] = useTransition();
-
-  const [optimisticFilters, setOptimisticFilters] = useOptimistic(
-    searchParams,
-    (prevState, newState: Partial<ProductsBody>) => ({
-      ...prevState,
-      ...newState,
-    })
-  );
-
-  const updateFilters = (newFilters: Partial<ProductsBody>) => {
-    const updatedState = {
-      ...optimisticFilters,
-      ...newFilters,
-    };
-
-    const newUrlSearchParams = new URLSearchParams();
-
-    Object.entries(updatedState).forEach(([key, value]) => {
-      if (Array.isArray(value)) {
-        value.forEach((item) => newUrlSearchParams.append(key, item));
-      } else if (value !== undefined && value !== null) {
-        newUrlSearchParams.append(key, value.toString());
-      }
-    });
-
-    startTransition(() => {
-      setOptimisticFilters(updatedState || {});
-      router.push(`?${newUrlSearchParams}`);
-    });
-  };
+}: PropsWithChildren<ProductsFilterProviderProps>) {
+  const { filter, updateFilter, isPending } = useFilter(searchParams);
 
   const value = useMemo(
     () => ({
-      filters: optimisticFilters || {},
+      filters: filter,
       isPending,
-      updateFilters,
+      updateFilter,
     }),
-    [optimisticFilters, isPending, updateFilters]
+    [filter, isPending, updateFilter]
   );
 
   return (
-    <FilterContextProvider value={value}>{children}</FilterContextProvider>
+    <ProductsFilterProvider value={value}>{children}</ProductsFilterProvider>
   );
 }
 
-export { useFiltersContext };
+export { useProductsFilter };

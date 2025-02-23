@@ -5,7 +5,7 @@ import { Search } from "@/assets/icons";
 import { Input } from "@/components/input";
 import { cn } from "@/lib/cn";
 import type { FilterResponse } from "@/typings/products";
-import { useFiltersContext } from "../filter-provider";
+import { useProductsFilter } from "../filter-provider";
 import "./filter-form.scss";
 
 export interface FilterFormProps {
@@ -16,7 +16,7 @@ export interface FilterFormProps {
 const block = cn("productsFilterForm");
 
 export function FilterForm({ className, filterConfig }: FilterFormProps) {
-  const { filters, updateFilters } = useFiltersContext();
+  const { filters, updateFilters } = useProductsFilter();
 
   const handleFormChange = (event: SyntheticEvent) => {
     const { name, value } = event.target as HTMLInputElement;
