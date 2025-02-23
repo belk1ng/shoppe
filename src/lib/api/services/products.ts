@@ -23,6 +23,20 @@ export class ProductsService {
   constructor(private readonly client: HttpClient) {}
 
   /**
+   * Fetches all products from the server.
+   *
+   * @returns {Promise<ProductsResponse>} A promise that resolves to the fetched products data.
+   */
+  public async getAllProducts() {
+    // NOTE: There are no endpoint to fetch all products
+    const temp = await this.getProducts({ offset: 0, limit: 1 });
+    return this.getProducts({
+      offset: 0,
+      limit: temp.totalProducts,
+    });
+  }
+
+  /**
    * Fetches a list of products based on the provided parameters.
    *
    * @param {ProductsBody} body - Parameters to filter and paginate the products.

@@ -11,6 +11,10 @@
     border-block-end-color: variables.$dark-grey;
   }
 
+  &:focus-within {
+    @include mixins.focus-animation;
+  }
+
   &__field {
     width: 100%;
     padding-block: 0.75em;
@@ -19,6 +23,10 @@
     &::placeholder {
       font-size: 1em;
       color: variables.$dark-grey;
+    }
+
+    &:focus-visible {
+      box-shadow: none !important;
     }
   }
 }

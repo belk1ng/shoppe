@@ -26,7 +26,7 @@
 
   @include mixins.respond-to(xs) {
     gap: 2.5em;
-    align-items: start;
+    align-items: flex-start;
     @include mixins.flex-column;
   }
 
@@ -37,7 +37,7 @@
     & .navigation__list {
       @include mixins.respond-to(xs) {
         gap: 0.75em;
-        align-items: start;
+        align-items: flex-start;
         @include mixins.flex-column;
       }
     }

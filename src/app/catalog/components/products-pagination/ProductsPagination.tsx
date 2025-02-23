@@ -1,13 +1,13 @@
 "use client";
 
 import { Pagination, type PaginationProps } from "@/components/pagination";
-import { useFiltersContext } from "../filter-provider";
+import { useProductsFilter } from "../filter-provider";
 
 export function ProductsPagination({
   totalCount,
   className,
 }: Omit<PaginationProps, "onChange">) {
-  const { updateFilters, filters } = useFiltersContext();
+  const { updateFilters, filters } = useProductsFilter();
 
   if (!totalCount) {
     return null;
