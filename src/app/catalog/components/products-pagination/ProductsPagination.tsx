@@ -7,7 +7,7 @@ export function ProductsPagination({
   totalCount,
   className,
 }: Omit<PaginationProps, "onChange">) {
-  const { updateFilters, filters } = useProductsFilter();
+  const { updateFilter, filters } = useProductsFilter();
 
   if (!totalCount) {
     return null;
@@ -17,7 +17,7 @@ export function ProductsPagination({
     limit,
     offset,
   }) => {
-    updateFilters({
+    updateFilter({
       limit,
       offset,
     });

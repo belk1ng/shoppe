@@ -16,11 +16,11 @@ export interface FilterFormProps {
 const block = cn("productsFilterForm");
 
 export function FilterForm({ className, filterConfig }: FilterFormProps) {
-  const { filters, updateFilters } = useProductsFilter();
+  const { filters, updateFilter } = useProductsFilter();
 
   const handleFormChange = (event: SyntheticEvent) => {
     const { name, value } = event.target as HTMLInputElement;
-    updateFilters({ [name]: value, offset: 0 });
+    updateFilter({ [name]: value, offset: 0 });
   };
 
   return (
