@@ -8,7 +8,7 @@ import { useCallback, useOptimistic, useTransition } from "react";
  *
  * @returns {{
  *   filters: FilterState,          // The current optimistic filter state.
- *   updateFilters: (newFilters: Partial<FilterState>) => void, // Function to update the filters.
+ *   updateFilter: (newFilters: Partial<FilterState>) => void, // Function to update the filters.
  *   isPending: boolean             // Indicates if a transition is pending (e.g., during URL updates).
  * }} An object containing the current filters, a function to update them, and a pending state.
  *
@@ -17,8 +17,8 @@ import { useCallback, useOptimistic, useTransition } from "react";
  * @param {FilterState} values - The initial filter state values.
  *
  * @example
- * const { filters, updateFilters, isPending } = useFilter({ category: 'books', price: 20 });
- * updateFilters({ price: 30 }); // Updates the price filter and reflects it in the URL.
+ * const { filters, updateFilter, isPending } = useFilter({ category: 'books', price: 20 });
+ * updateFilter({ price: 30 }); // Updates the price filter and reflects it in the URL.
  */
 export const useFilter = <FilterState extends Record<string, unknown>>(
   values: FilterState
