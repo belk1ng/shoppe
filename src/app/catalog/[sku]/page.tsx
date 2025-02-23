@@ -30,12 +30,7 @@ export const generateMetadata = async ({ params }: ProductPageProps) => {
 };
 
 export const generateStaticParams = async () => {
-  const temp = await api.products.getProducts({ offset: 0, limit: 1 });
-  const productsResponse = await api.products.getProducts({
-    offset: 0,
-    limit: temp.totalProducts,
-  });
-
+  const productsResponse = await api.products.getAllProducts();
   return productsResponse.products.map((product) => ({
     sku: product.sku.toString(),
   }));

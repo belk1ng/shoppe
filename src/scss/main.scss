@@ -114,25 +114,6 @@ select {
   clip-path: inset(100%);
 }
 
-@keyframes focus-animation {
-  from {
-    box-shadow:
-      0 0 0 1px variables.$golden,
-      0 0 0 0 hsl(35deg 65% 71%);
-  }
-
-  to {
-    box-shadow:
-      0 0 0 3px hsl(39deg 28% 57%),
-      0 0 0 6px transparent;
-  }
-}
-
-:focus-visible {
-  outline: none;
-  animation: focus-animation 0.5s ease-in forwards;
-}
-
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
     scroll-behavior: auto;
@@ -148,4 +129,8 @@ select {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
   }
+}
+
+:focus-visible {
+  @include mixins.focus-animation;
 }

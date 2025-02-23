@@ -5,7 +5,6 @@
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
-    "start": "next start",
     "format": "eslint ./src --fix && stylelint '**/*.scss' --fix",
     "lint-staged": "lint-staged --config .lintstagedrc.json",
     "lint:ts": "eslint ./src",
