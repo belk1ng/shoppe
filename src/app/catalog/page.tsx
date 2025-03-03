@@ -2,6 +2,7 @@ import { ProductCard } from "@/components/product-card";
 import { api } from "@/lib/api";
 import { cn } from "@/lib/cn";
 import type { ProductsBody } from "@/typings/products";
+import { EmptyCatalog } from "./components/empty-catalog";
 import { FilterForm } from "./components/filter-form";
 import { FilterProvider } from "./components/filter-provider";
 import { ProductsPagination } from "./components/products-pagination";
@@ -53,11 +54,18 @@ export default async function Catalog({ searchParams }: CatalogPageProps) {
             filterConfig={filtersConfig}
           />
 
-          {/*// TODO: Handle not found records*/}
-          <div className={block("content")}>
-            {productsResponse.products.map((product, index) => (
-              <ProductCard heading="h2" key={index} product={product} />
-            ))}
+          <div
+            className={block("content", {
+              empty: productsResponse.products.length === 0,
+            })}
+          >
+            {productsResponse.products.length > 0 ? (
+              productsResponse.products.map((product, index) => (
+                <ProductCard heading="h2" key={index} product={product} />
+              ))
+            ) : (
+              <EmptyCatalog />
+            )}
           </div>
 
           <ProductsPagination

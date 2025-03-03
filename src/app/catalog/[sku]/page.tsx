@@ -9,6 +9,8 @@ interface ProductPageProps {
   params: Promise<ProductPageParams>;
 }
 
+export const revalidate = 3600;
+
 export const generateMetadata = async ({ params }: ProductPageProps) => {
   const sku = (await params).sku;
 
