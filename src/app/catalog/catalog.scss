@@ -1,22 +1,24 @@
 @use "src/scss/mixins";
+@use "src/scss/variables";
 
 .catalog {
+  display: flex;
   margin-block-end: 10rem;
   font-size: 1rem;
 
   &__container {
     display: grid;
     grid-gap: 2em;
-    grid-template-areas: "head" "filter" "content" "pagination";
-    grid-template-columns: 1fr;
+    grid-template: "head" auto "filter" auto "content" 1fr "pagination" auto / 1fr;
+    width: 100%;
 
     @include mixins.respond-to(md) {
       grid-gap: 0 2em;
+      grid-template: auto 1fr auto / repeat(4, 1fr);
       grid-template-areas:
         "head head head head"
         "filter content content content"
         ". pagination pagination pagination";
-      grid-template-columns: repeat(4, 1fr);
     }
   }
 
@@ -39,11 +41,31 @@
     grid-area: content;
     grid-gap: 4.375em 1.5em;
     grid-template-columns: repeat(auto-fill, minmax(18em, 1fr));
+
+    &--empty {
+      @include mixins.flex-center-column;
+    }
   }
 
   &__pagination {
     grid-area: pagination;
     justify-content: center;
     margin-block-start: 4em;
+  }
+}
+
+.catalogError {
+  gap: 1.5em;
+  font-size: 1rem;
+  @include mixins.flex-center-column;
+
+  &__title {
+    font-size: 1.625em;
+  }
+
+  &__subtitle {
+    font-size: 1.25em;
+    font-weight: 400;
+    color: variables.$dark-grey;
   }
 }
