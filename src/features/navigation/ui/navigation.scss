@@ -1,0 +1,35 @@
+@use "src/shared/styles/mixins";
+@use "src/shared/styles/variables";
+
+.navigation {
+  color: variables.$black;
+
+  &__list {
+    gap: 2.4575em;
+    @include mixins.flex-center-y;
+  }
+
+  &__link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  &__separator {
+    width: 1px;
+    height: 20px;
+    border-inline-start: 1px solid variables.$dark-grey;
+  }
+
+  &__indicator {
+    position: absolute;
+    bottom: -1px;
+
+    height: 2px;
+
+    background-color: variables.$black;
+
+    transition:
+      right 0.25s ease,
+      width 0.25s ease;
+  }
+}
