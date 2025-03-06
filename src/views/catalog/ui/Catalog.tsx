@@ -5,7 +5,7 @@ import {
   FilterProvider,
   ProductsPagination,
 } from "@/features/filter-products";
-import { cn } from "@/shared/lib/cn";
+import { cn } from "@/shared/lib";
 import { getCatalogFilterAndProducts } from "../model/getCatalogFilterAndProducts";
 import type { CatalogPageProps } from "../model/types";
 import "./catalog.scss";

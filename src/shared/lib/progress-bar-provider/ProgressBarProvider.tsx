@@ -1,6 +1,6 @@
 "use client";
 
-import { createSafeContext } from "@/shared/lib/createSafeContext";
+import { createSafeContext } from "@/shared/lib";
 import { useProgress } from "./useProgress";
 
 export const [ProgressBarProvider, useProgressBar] = createSafeContext<

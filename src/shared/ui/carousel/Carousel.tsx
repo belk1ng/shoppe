@@ -1,4 +1,4 @@
-import { cn } from "../../../lib/cn";
+import { cn } from "@/shared/lib";
 
 export interface CarouselProps {
   className?: string;

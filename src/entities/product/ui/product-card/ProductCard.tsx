@@ -1,7 +1,7 @@
 import Image from "next/image";
 import type { Product } from "@/entities/product";
-import { cn } from "@/shared/lib/cn";
-import { PatchedLink } from "@/shared/ui/progress-bar";
+import { cn } from "@/shared/lib";
+import { PatchedLink } from "@/shared/ui";
 import "./product-card.scss";
 
 export interface ProductCardProps {

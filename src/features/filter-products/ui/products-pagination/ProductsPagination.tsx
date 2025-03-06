@@ -1,6 +1,6 @@
 "use client";
 
-import { Pagination, type PaginationProps } from "@/shared/ui/pagination";
+import { Pagination, type PaginationProps } from "@/shared/ui";
 import { useProductsFilter } from "../../model/FilterProvider";
 
 export function ProductsPagination({

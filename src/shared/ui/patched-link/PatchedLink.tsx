@@ -9,7 +9,7 @@ import {
   type PropsWithChildren,
   startTransition,
 } from "react";
-import { useProgressBar } from "../model/ProgressBarProvider";
+import { useProgressBar } from "@/shared/lib";
 
 export const PatchedLink = forwardRef<
   HTMLAnchorElement,
