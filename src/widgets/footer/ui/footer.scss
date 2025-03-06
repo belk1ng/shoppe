@@ -1,0 +1,45 @@
+@use "src/shared/styles/mixins";
+@use "src/shared/styles/variables";
+
+.footer {
+  justify-content: space-between;
+  border-block-start: 1px solid variables.$stroke-color;
+  font-size: 1rem;
+
+  @include mixins.flex-center-y;
+
+  @include mixins.respond-to(xs) {
+    padding-block-start: 0.25rem;
+  }
+
+  @include mixins.respond-to(sm) {
+    padding-block-start: 0.5rem;
+  }
+
+  @include mixins.respond-to(lg) {
+    padding-block-start: 1.666rem;
+  }
+
+  @include mixins.respond-to(xs) {
+    border-block-start: none;
+  }
+
+  @include mixins.respond-to(xs) {
+    gap: 2.5em;
+    align-items: flex-start;
+    @include mixins.flex-column;
+  }
+
+  &__navigation {
+    color: variables.$dark-grey;
+    text-transform: uppercase;
+
+    & .navigation__list {
+      @include mixins.respond-to(xs) {
+        gap: 0.75em;
+        align-items: flex-start;
+        @include mixins.flex-column;
+      }
+    }
+  }
+}

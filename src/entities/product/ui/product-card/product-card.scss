@@ -1,0 +1,23 @@
+@use "src/shared/styles/mixins";
+@use "src/shared/styles/variables";
+
+.productCard {
+  gap: 0.8em;
+  font-size: 1em;
+  color: variables.$black;
+  @include mixins.flex-column;
+
+  &__image {
+    border-radius: 0.4em;
+    @include mixins.square-size(100%);
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__price {
+    font-weight: 500;
+    color: variables.$golden;
+  }
+}

@@ -1,0 +1,6 @@
+.productsGrid {
+  display: grid;
+  grid-gap: 4.375em 1.5em;
+  grid-template-columns: repeat(auto-fill, minmax(18em, 1fr));
+  font-size: 1rem;
+}
