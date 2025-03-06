@@ -1,0 +1,68 @@
+@use "src/shared/styles/mixins";
+@use "src/shared/styles/variables";
+
+.catalog {
+  display: flex;
+  margin-block-end: 10rem;
+  font-size: 1rem;
+
+  &__container {
+    display: grid;
+    grid-gap: 2em;
+    grid-template: "head" auto "filter" auto "content" 1fr "pagination" auto / 1fr;
+    width: 100%;
+
+    @include mixins.respond-to(md) {
+      grid-gap: 0 2em;
+      grid-template: auto 1fr auto / repeat(4, 1fr);
+      grid-template-areas:
+        "head head head head"
+        "filter content content content"
+        ". pagination pagination pagination";
+    }
+  }
+
+  &__heading {
+    grid-area: head;
+    padding-block: 2em;
+  }
+
+  &__title {
+    font-size: 1.625em;
+    font-weight: 500;
+  }
+
+  &__filter {
+    grid-area: filter;
+  }
+
+  &__content {
+    grid-area: content;
+
+    &--empty {
+      @include mixins.flex-center-column;
+    }
+  }
+
+  &__pagination {
+    grid-area: pagination;
+    justify-content: center;
+    margin-block-start: 4em;
+  }
+}
+
+.catalogError {
+  gap: 1.5em;
+  font-size: 1rem;
+  @include mixins.flex-center-column;
+
+  &__title {
+    font-size: 1.625em;
+  }
+
+  &__subtitle {
+    font-size: 1.25em;
+    font-weight: 400;
+    color: variables.$dark-grey;
+  }
+}

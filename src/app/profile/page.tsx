@@ -1,15 +1,5 @@
-export const metadata = {
-  title: "Профиль – Shoppe",
-  description:
-    "Manage your Shoppe account settings, including personal information and preferences.",
-  openGraph: {
-    title: "Твой профиль – Shoppe",
-    description:
-      "Manage your Shoppe account settings, including personal information and preferences.",
-    url: "https://shoppe.com/profile",
-  },
-};
+import { Profile, metadata } from "@/views/profile";
 
-export default function Profile() {
-  return <h1>Profile page</h1>;
-}
+export { metadata };
+
+export default Profile;

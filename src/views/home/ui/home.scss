@@ -1,0 +1,31 @@
+@use "src/shared/styles/mixins";
+@use "src/shared/styles/variables";
+
+.home {
+  margin-block-end: 10rem;
+  font-size: 1rem;
+
+  &__heading {
+    @include mixins.flex-center-y;
+
+    justify-content: space-between;
+    padding-block: 2em;
+  }
+
+  &__title {
+    font-size: 1.625em;
+    font-weight: 500;
+  }
+
+  &__link {
+    font-size: 1.25em;
+    color: variables.$golden;
+    text-decoration: none;
+  }
+
+  &__products {
+    grid-gap: 4em 2em;
+    grid-template-columns: repeat(auto-fit, minmax(19em, 1fr));
+    font-size: 1.25em;
+  }
+}
