@@ -1,7 +1,7 @@
 "use client";
 
-import { cn } from "@/shared/lib/cn";
-import { PatchedLink } from "@/shared/ui/progress-bar";
+import { cn } from "@/shared/lib";
+import { PatchedLink } from "@/shared/ui";
 import type { NavigationItem } from "../model/types";
 import { useNavigation } from "../model/useNavigation";
 import "./navigation.scss";

@@ -8,7 +8,8 @@
     "format": "eslint ./src --fix && stylelint '**/*.scss' --fix",
     "lint-staged": "lint-staged --config .lintstagedrc.json",
     "lint:ts": "eslint ./src",
-    "lint:css": "stylelint '**/*.scss'"
+    "lint:css": "stylelint '**/*.scss'",
+    "lint:fsd": "steiger ./src"
   },
   "dependencies": {
     "@bem-react/classname": "1.6.0",
@@ -28,6 +29,7 @@
     "eslint-plugin-unused-imports": "4.1.4",
     "lint-staged": "15.4.3",
     "prettier": "3.5.1",
+    "steiger": "0.5.5",
     "stylelint": "16.14.1",
     "stylelint-config-clean-order": "7.0.0",
     "stylelint-config-prettier-scss": "1.0.0",

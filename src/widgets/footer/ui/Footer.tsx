@@ -1,5 +1,5 @@
 import { Navigation, type NavigationItem } from "@/features/navigation";
-import { cn } from "@/shared/lib/cn";
+import { cn } from "@/shared/lib";
 import "./footer.scss";
 
 const block = cn("footer");

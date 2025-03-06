@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { Navigation, type NavigationItem } from "@/features/navigation";
-import { Cart, Favorite, Profile } from "@/shared/assets/icons";
-import { cn } from "@/shared/lib/cn";
-import { PatchedLink } from "@/shared/ui/progress-bar";
+import { Cart, Favorite, Profile } from "@/shared/assets";
+import { cn } from "@/shared/lib";
+import { PatchedLink } from "@/shared/ui";
 import "./header.scss";
 
 const block = cn("header");
