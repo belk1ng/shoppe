@@ -1,6 +1,6 @@
 import { ProductsGrid } from "@/entities/product";
-import { cn } from "@/shared/lib/cn";
-import { PatchedLink } from "@/shared/ui/progress-bar";
+import { cn } from "@/shared/lib";
+import { PatchedLink } from "@/shared/ui";
 import { getRecentProducts } from "../model/getRecentProducts";
 import "./home.scss";
 

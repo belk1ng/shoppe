@@ -1,4 +1,4 @@
-import { cn } from "@/shared/lib/cn";
+import { cn } from "@/shared/lib";
 import type { Product } from "../../model/types";
 import { ProductCard, type ProductCardProps } from "../product-card";
 import "./products-grid.scss";

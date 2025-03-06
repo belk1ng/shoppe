@@ -2,9 +2,9 @@
 
 import type { SyntheticEvent } from "react";
 import { FilterResponse } from "@/entities/product";
-import { Search } from "@/shared/assets/icons";
-import { cn } from "@/shared/lib/cn";
-import { Input } from "@/shared/ui/input";
+import { Search } from "@/shared/assets";
+import { cn } from "@/shared/lib";
+import { Input } from "@/shared/ui";
 import { useProductsFilter } from "../../model/FilterProvider";
 import "./filter-form.scss";
 

@@ -1,5 +1,5 @@
-import { cn } from "@/shared/lib/cn";
-import { PatchedLink } from "@/shared/ui/progress-bar";
+import { cn } from "@/shared/lib";
+import { PatchedLink } from "@/shared/ui";
 import "./not-found.scss";
 
 const block = cn("notFound");

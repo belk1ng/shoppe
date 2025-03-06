@@ -2,8 +2,8 @@
 
 import { type Dispatch, type PropsWithChildren, useMemo } from "react";
 import type { ProductsBody } from "@/entities/product";
-import { createSafeContext } from "@/shared/lib/createSafeContext";
-import { useFilter } from "@/shared/model/hooks/useFilter";
+import { createSafeContext } from "@/shared/lib";
+import { useFilter } from "@/shared/model";
 
 interface ProductsFilterProviderValue {
   filters: ProductsBody;
