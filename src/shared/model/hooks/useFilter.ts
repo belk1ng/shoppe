@@ -36,7 +36,7 @@ export const useFilter = <FilterState extends Record<string, unknown>>(
   );
 
   const updateFilter = useCallback(
-    (filter: Partial<FilterState>) => {
+    (filter: Partial<FilterState>, callback?: VoidFunction) => {
       const updatedFilter = {
         ...optimisticFilter,
         ...filter,
@@ -54,6 +54,7 @@ export const useFilter = <FilterState extends Record<string, unknown>>(
       startTransition(() => {
         setOptimisticFilter(updatedFilter || {});
         router.push(`?${newUrlSearchParams}`);
+        callback?.();
       });
     },
     [optimisticFilter, setOptimisticFilter, router]
