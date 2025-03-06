@@ -1,6 +1,12 @@
 "use client";
 
-import { Children, PropsWithChildren, useId } from "react";
+import {
+  Children,
+  type PropsWithChildren,
+  useId,
+  useRef,
+  useEffect,
+} from "react";
 import { cn } from "@/shared/lib";
 import { useCarousel } from "./useCarousel";
 import "./carousel.scss";
@@ -21,16 +27,32 @@ export function Carousel({
 
   const { activeSlide, onChangeSlide } = useCarousel(slides, autoPlayInterval);
 
+  const slidesContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (slidesContainerRef.current) {
+      slidesContainerRef.current.style.transform = `translateX(-${
+        activeSlide * 100
+      }%)`;
+    }
+  }, [activeSlide]);
+
   const prefixId = useId();
 
   return (
     <div className={block("", [className])}>
-      <div aria-live="polite" className={block("slides")}>
+      <div
+        aria-live="polite"
+        className={block("slides")}
+        ref={slidesContainerRef}
+      >
         {Children.map(children, (child, index) => (
           <div
             aria-label={`${index + 1} из ${slides}`}
             aria-roledescription="slide"
-            className={block("slide", { active: index === activeSlide })}
+            className={block("slide", {
+              active: index === activeSlide,
+            })}
             id={prefixId + index}
             key={index}
             role="tabpanel"

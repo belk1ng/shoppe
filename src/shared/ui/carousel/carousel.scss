@@ -12,18 +12,16 @@
   font-size: 1rem;
 
   &__slides {
+    display: flex;
     width: 100%;
     height: 100%;
+    transition: transform 0.5s ease-in-out;
   }
 
   &__slide {
-    display: none;
+    flex-shrink: 0;
     width: 100%;
     height: 100%;
-
-    &--active {
-      display: flex;
-    }
   }
 
   &__indicators {
@@ -42,12 +40,13 @@
     border: 1px solid variables.$white;
     border-radius: 50%;
 
-    background-color: transparent;
+    background-color: variables.$white;
 
     transition: all 0.15s ease-in-out;
     @include mixins.square-size(0.5em);
 
     &--active {
+      background-color: transparent;
       @include mixins.square-size(0.75em);
     }
   }
