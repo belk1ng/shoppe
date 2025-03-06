@@ -1,5 +1,8 @@
-import { ProductsGrid } from "@/entities/product";
+import { ProductsGrid, ProductSlide } from "@/entities/product";
+import FirstSlidePic from "@/shared/assets/images/slide-1.webp";
+import SecondSlidePic from "@/shared/assets/images/slide-2.webp";
 import { cn } from "@/shared/lib";
+import { Carousel } from "@/shared/ui";
 import { PatchedLink } from "@/shared/ui";
 import { getRecentProducts } from "../model/getRecentProducts";
 import "./home.scss";
@@ -12,6 +15,41 @@ export async function Home() {
   return (
     <main className={block()}>
       <h1 className="visuallyHidden">Главная страница</h1>
+
+      <section className={block("carousel")}>
+        <Carousel autoPlayInterval={5_000}>
+          <ProductSlide
+            imageSrc={FirstSlidePic}
+            price={68}
+            title="Gold big hoops"
+          />
+          <ProductSlide
+            imageSrc={SecondSlidePic}
+            price={75}
+            title="Lira Earrings"
+          />
+          <ProductSlide
+            imageSrc={FirstSlidePic}
+            price={23}
+            title="Hal Earrings"
+          />
+          <ProductSlide
+            imageSrc={SecondSlidePic}
+            price={10}
+            title="Kaede Hair Pin"
+          />
+          <ProductSlide
+            imageSrc={FirstSlidePic}
+            price={12}
+            title="Plaine Necklace"
+          />
+          <ProductSlide
+            imageSrc={SecondSlidePic}
+            price={199}
+            title="Yuki Hair Pin Set of 3"
+          />
+        </Carousel>
+      </section>
 
       <section>
         <header className={block("heading")}>

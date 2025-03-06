@@ -17,7 +17,9 @@ export function ProductCard({ product, className, heading }: ProductCardProps) {
 
   return (
     <article className={block("", [className])}>
-      <Heading className="visuallyHidden">{product.name}</Heading>
+      <Heading className="visuallyHidden" lang="en">
+        {product.name}
+      </Heading>
 
       <Image
         alt="Product image"
@@ -27,7 +29,11 @@ export function ProductCard({ product, className, heading }: ProductCardProps) {
         width={377}
       />
 
-      <PatchedLink className={block("link")} href={`/catalog/${product.sku}`}>
+      <PatchedLink
+        className={block("link")}
+        href={`/catalog/${product.sku}`}
+        lang="en"
+      >
         {product.name}
       </PatchedLink>
       <p className={block("price")}>$ {product.price.toFixed(2)}</p>
