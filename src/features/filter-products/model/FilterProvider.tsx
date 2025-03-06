@@ -1,8 +1,13 @@
 "use client";
 
-import { type Dispatch, type PropsWithChildren, useMemo } from "react";
+import {
+  type Dispatch,
+  type PropsWithChildren,
+  useCallback,
+  useMemo,
+} from "react";
 import type { ProductsBody } from "@/entities/product";
-import { createSafeContext } from "@/shared/lib";
+import { createSafeContext, useProgressBar } from "@/shared/lib";
 import { useFilter } from "@/shared/model";
 
 interface ProductsFilterProviderValue {
@@ -24,13 +29,23 @@ export function FilterProvider({
 }: PropsWithChildren<ProductsFilterProviderProps>) {
   const { filter, updateFilter, isPending } = useFilter(searchParams);
 
+  const progress = useProgressBar();
+
+  const onUpdateFilter = useCallback(
+    (filter: Partial<ProductsBody>) => {
+      progress.start();
+      updateFilter(filter, progress.done);
+    },
+    [updateFilter, progress]
+  );
+
   const value = useMemo(
     () => ({
       filters: filter,
       isPending,
-      updateFilter,
+      updateFilter: onUpdateFilter,
     }),
-    [filter, isPending, updateFilter]
+    [filter, isPending, onUpdateFilter]
   );
 
   return (
