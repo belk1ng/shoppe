@@ -5,6 +5,10 @@
   margin-block-end: 10rem;
   font-size: 1rem;
 
+  &__carousel {
+    margin-block-start: 1em;
+  }
+
   &__heading {
     @include mixins.flex-center-y;
 
