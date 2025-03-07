@@ -2,8 +2,8 @@
 
 import { cn } from "@/shared/lib";
 import { PatchedLink } from "@/shared/ui";
+import { useNavigation } from "../lib/useNavigation";
 import type { NavigationItem } from "../model/types";
-import { useNavigation } from "../model/useNavigation";
 import "./navigation.scss";
 
 interface NavigationProps {
