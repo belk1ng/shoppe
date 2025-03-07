@@ -1,0 +1,32 @@
+@use "src/shared/styles/mixins";
+@use "src/shared/styles/variables";
+
+.rating {
+  font-size: 1rem;
+  @include mixins.flex-center-y;
+
+  &__label {
+    padding-inline: 0.3125em;
+    color: variables.$white;
+
+    &:not(&--disabled) {
+      cursor: pointer;
+    }
+
+    &:first-of-type {
+      padding-inline-start: 0;
+    }
+
+    &:last-of-type {
+      padding-inline-end: 0;
+    }
+
+    &--active {
+      color: variables.$black;
+    }
+  }
+
+  &__star {
+    fill: currentcolor;
+  }
+}
