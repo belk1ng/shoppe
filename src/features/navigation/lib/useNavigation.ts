@@ -6,7 +6,7 @@ import {
   useRef,
   useState,
 } from "react";
-import type { NavigationItem } from "./types";
+import type { NavigationItem } from "../model/types";
 
 export const useNavigation = (items: NavigationItem[]) => {
   const pathname = usePathname();
