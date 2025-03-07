@@ -6,3 +6,4 @@ export {
   useProgressBar,
   ProgressState,
 } from "./progress-bar-provider";
+export { getRussianPluralForm } from "./get-russian-plural-form";

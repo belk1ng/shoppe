@@ -1,0 +1,1 @@
+export { getRussianPluralForm } from "./getRussianPluralForm";

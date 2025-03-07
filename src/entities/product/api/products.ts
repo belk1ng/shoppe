@@ -1,3 +1,4 @@
+import { http, HttpClient } from "@/shared/api";
 import type {
   AddReviewBody,
   AddReviewResponse,
@@ -6,8 +7,7 @@ import type {
   ProductsResponse,
   ReviewBody,
   SkuResponse,
-} from "@/entities/product";
-import { http, HttpClient } from "@/shared/api";
+} from "./types";
 
 /**
  * A service class for handling product-related operations.
