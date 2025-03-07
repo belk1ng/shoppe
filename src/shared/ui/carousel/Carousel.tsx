@@ -49,7 +49,7 @@ export function Carousel({
         {Children.map(children, (child, index) => (
           <div
             aria-label={`${index + 1} из ${slides}`}
-            aria-roledescription="slide"
+            aria-roledescription="Слайд"
             className={block("slide", {
               active: index === activeSlide,
             })}
