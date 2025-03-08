@@ -16,6 +16,7 @@ export async function Home() {
     <main className={block()}>
       <h1 className="visuallyHidden">Главная страница</h1>
 
+      {/*TODO: Add route handler for carousel items*/}
       <section className={block("carousel")}>
         <Carousel autoPlayInterval={5_000}>
           <ProductSlide
