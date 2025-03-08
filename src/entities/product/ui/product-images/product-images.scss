@@ -1,0 +1,107 @@
+@use "src/shared/styles/mixins";
+@use "src/shared/styles/variables";
+
+.productImages {
+  position: relative;
+
+  display: flex;
+  gap: 1em;
+  align-items: start;
+
+  max-height: 15em;
+
+  font-size: 2.5rem;
+
+  background-color: variables.$white;
+
+  &__gallery {
+    position: relative;
+    overflow: hidden;
+    max-height: inherit;
+    background-color: variables.$white;
+  }
+
+  &__panel {
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+
+    overflow: auto;
+    gap: 1em;
+
+    max-height: inherit;
+
+    background-color: inherit;
+    @include mixins.flex-column;
+  }
+
+  &__content {
+    height: 100%;
+  }
+
+  &__preview {
+    cursor: pointer;
+
+    overflow: hidden;
+
+    min-height: 3em;
+    border: 1px solid transparent;
+    border-radius: 8px;
+
+    transition: border 0.15s ease-in;
+
+    &:not(&--active) {
+      @include mixins.hover {
+        border-color: variables.$stroke-color;
+      }
+    }
+
+    &--active {
+      border-color: variables.$golden;
+    }
+  }
+
+  &__previewImage {
+    width: 3em;
+    height: 3em;
+  }
+
+  &__image {
+    display: none;
+
+    width: 13.5em;
+    height: 15em;
+    border: 1px solid transparent;
+    border-radius: 8px;
+
+    &--active {
+      display: block;
+    }
+  }
+
+  &__controls {
+    background-color: inherit;
+  }
+
+  &__control {
+    cursor: pointer;
+
+    position: absolute;
+    left: 0;
+
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+    background-color: inherit;
+    @include mixins.flex-center;
+
+    &--top {
+      top: 0;
+    }
+
+    &--bottom {
+      bottom: 0;
+    }
+  }
+}
