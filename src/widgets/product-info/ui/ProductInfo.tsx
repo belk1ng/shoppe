@@ -6,6 +6,7 @@ import {
 import { Rating } from "@/entities/review";
 import { cn, getRussianPluralForm } from "@/shared/lib";
 import "./product-info.scss";
+import { Counter } from "@/shared/ui";
 
 export interface ProductInfoProps {
   product: Product;
@@ -37,6 +38,8 @@ export function ProductInfo({ product, className }: ProductInfoProps) {
         </div>
 
         <p className={block("description")}>{product.description}</p>
+
+        <Counter />
       </div>
     </section>
   );
