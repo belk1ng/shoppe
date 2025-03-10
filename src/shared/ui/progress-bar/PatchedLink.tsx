@@ -9,13 +9,14 @@ import {
   type PropsWithChildren,
   startTransition,
 } from "react";
-import { useProgressBar } from "@/shared/lib";
+import { useProgressBar } from "./ProgressBarProvider";
 
 export const PatchedLink = forwardRef<
   HTMLAnchorElement,
   PropsWithChildren<LinkProps & HTMLAttributes<HTMLAnchorElement>>
 >(({ href, onClick: onClick, ...props }, ref) => {
   const router = useRouter();
+
   const progress = useProgressBar();
 
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
