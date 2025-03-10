@@ -1,9 +1,10 @@
 "use client";
 
 import type { PropsWithChildren } from "react";
-import { ProgressState, useProgress, ProgressBarProvider } from "@/shared/lib";
 import { cn } from "@/shared/lib/cn";
 import "./progress-bar.scss";
+import { ProgressBarProvider } from "./ProgressBarProvider";
+import { ProgressState, useProgress } from "./useProgress";
 
 const block = cn("progressBar");
 
