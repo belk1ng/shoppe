@@ -37,8 +37,8 @@ export const getRussianPluralForm = (
   number: number,
   wordForms: [string, string, string]
 ) => {
-  const lastDigit = number % 10;
-  const lastTwoDigits = number % 100;
+  const lastDigit = Math.abs(number) % 10;
+  const lastTwoDigits = Math.abs(number) % 100;
 
   if (lastTwoDigits >= 11 && lastTwoDigits <= 14) {
     return `${number} ${wordForms[2]}`;
