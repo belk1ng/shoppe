@@ -7,8 +7,9 @@ import {
   useMemo,
 } from "react";
 import type { ProductsBody } from "@/entities/product";
-import { createSafeContext, useProgressBar } from "@/shared/lib";
-import { useFilter } from "@/shared/model";
+import { useFilter } from "@/shared/hooks";
+import { createSafeContext } from "@/shared/lib";
+import { useProgressBar } from "@/shared/ui";
 
 interface ProductsFilterProviderValue {
   filters: ProductsBody;
