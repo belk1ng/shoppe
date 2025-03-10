@@ -1,12 +1,13 @@
 import {
-  getProductPrice,
   type Product,
+  getProductAverageRating,
+  getProductPrice,
   ProductImages,
 } from "@/entities/product";
 import { Rating } from "@/entities/review";
 import { cn, getRussianPluralForm } from "@/shared/lib";
-import "./product-info.scss";
 import { Counter } from "@/shared/ui";
+import "./product-info.scss";
 
 export interface ProductInfoProps {
   product: Product;
@@ -27,7 +28,11 @@ export function ProductInfo({ product, className }: ProductInfoProps) {
         <p className={block("price")}>{getProductPrice(product.price)}</p>
 
         <div className={block("reviewsContainer")}>
-          <Rating defaultValue={3} disabled name="product-rating" />
+          <Rating
+            defaultValue={getProductAverageRating(product)}
+            disabled
+            name="product-rating"
+          />
           <p className={block("reviewsCount")}>
             {getRussianPluralForm(product.reviews.length, [
               "отзыв",
