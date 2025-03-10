@@ -1,0 +1,39 @@
+@use "src/shared/styles/mixins";
+@use "src/shared/styles/variables";
+
+.productInfo {
+  display: flex;
+  gap: 3.25em;
+  font-size: 1rem;
+
+  &__meta {
+    flex: 1;
+    gap: 1.25em;
+    @include mixins.flex-column;
+  }
+
+  &__title {
+    font-size: 1.625em;
+    font-weight: 400;
+  }
+
+  &__price {
+    font-size: 1.25em;
+    font-weight: 500;
+    color: variables.$golden;
+  }
+
+  &__reviewsContainer {
+    gap: 1.25em;
+    @include mixins.flex-center-y;
+  }
+
+  &__reviewsCount {
+    color: variables.$dark-grey;
+  }
+
+  &__description {
+    line-height: 1.6875em;
+    color: variables.$dark-grey;
+  }
+}

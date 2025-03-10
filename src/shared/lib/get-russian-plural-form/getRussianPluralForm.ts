@@ -10,27 +10,27 @@
  * @returns {string} The correct plural form of the word based on the number.
  *
  * @example
- * // Returns "звезда" (singular form for 1)
+ * // Returns "1 звезда" (singular form for 1)
  * getRussianPluralForm(1, ["звезда", "звезды", "звезд"]);
  *
  * @example
- * // Returns "звезды" (plural form for 2–4)
+ * // Returns "3 звезды" (plural form for 2–4)
  * getRussianPluralForm(3, ["звезда", "звезды", "звезд"]);
  *
  * @example
- * // Returns "звезд" (plural form for 5–20, 25–30, etc.)
+ * // Returns "5 звезд" (plural form for 5–20, 25–30, etc.)
  * getRussianPluralForm(5, ["звезда", "звезды", "звезд"]);
  *
  * @example
- * // Returns "яблоко" (singular form for 1)
+ * // Returns "1 яблоко" (singular form for 1)
  * getRussianPluralForm(1, ["яблоко", "яблока", "яблок"]);
  *
  * @example
- * // Returns "яблока" (plural form for 2–4)
+ * // Returns "3 яблока" (plural form for 2–4)
  * getRussianPluralForm(3, ["яблоко", "яблока", "яблок"]);
  *
  * @example
- * // Returns "яблок" (plural form for 5–20, 25–30, etc.)
+ * // Returns "10 яблок" (plural form for 5–20, 25–30, etc.)
  * getRussianPluralForm(10, ["яблоко", "яблока", "яблок"]);
  */
 export const getRussianPluralForm = (
@@ -41,14 +41,14 @@ export const getRussianPluralForm = (
   const lastTwoDigits = number % 100;
 
   if (lastTwoDigits >= 11 && lastTwoDigits <= 14) {
-    return wordForms[2];
+    return `${number} ${wordForms[2]}`;
   }
 
   if (lastDigit === 1) {
-    return wordForms[0];
+    return `${number} ${wordForms[0]}`;
   }
   if (lastDigit >= 2 && lastDigit <= 4) {
-    return wordForms[1];
+    return `${number} ${wordForms[1]}`;
   }
-  return wordForms[2];
+  return `${number} ${wordForms[2]}`;
 };

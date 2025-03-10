@@ -1,6 +1,7 @@
 export { productsService } from "./api/products";
 export * from "./api/types";
 export * from "./model/types";
+export * from "./lib/getProductPrice";
 export { ProductCard, type ProductCardProps } from "./ui/product-card";
 export { ProductImages, type ProductImagesProps } from "./ui/product-images";
 export { ProductSlide, type ProductSlideProps } from "./ui/product-slide";
