@@ -1,0 +1,26 @@
+@use "src/shared/styles/mixins";
+@use "src/shared/styles/variables";
+
+.counter {
+  gap: 1.5em;
+
+  padding: 0.875em 1em;
+  border-radius: 0.25em;
+
+  font-size: 1rem;
+  color: variables.$dark-grey;
+
+  background-color: variables.$light-grey;
+  @include mixins.flex-center;
+
+  &__action {
+    cursor: pointer;
+    user-select: none;
+
+    border: 0;
+
+    color: inherit;
+
+    background-color: transparent;
+  }
+}
