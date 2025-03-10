@@ -4,7 +4,8 @@ import { type InputHTMLAttributes, type ReactNode, useId } from "react";
 import { cn } from "@/shared/lib/cn";
 import "./input.scss";
 
-export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, "type"> {
   label: string;
   startIcon?: ReactNode;
   endIcon?: ReactNode;
@@ -28,7 +29,7 @@ export function Input({
       <label className="visuallyHidden" htmlFor={id ?? _id}>
         {label}
       </label>
-      <input className={block("field")} id={id ?? _id} {...props} />
+      <input className={block("field")} id={id ?? _id} {...props} type="text" />
       {endIcon}
     </div>
   );

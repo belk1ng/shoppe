@@ -1,4 +1,5 @@
 {
+  "*.{ts,tsx}": "vitest --run --config src/shared/config/vitest/vitest.config.ts",
   "*.{js,jsx,ts,tsx,json}": "eslint --fix",
   "*.{css,scss}": "stylelint --fix"
 }
