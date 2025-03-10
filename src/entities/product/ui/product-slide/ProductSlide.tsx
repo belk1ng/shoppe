@@ -1,6 +1,7 @@
 import Image, { type StaticImageData } from "next/image";
 import { cn } from "@/shared/lib";
 import { Button } from "@/shared/ui";
+import { getProductPrice } from "../../lib/getProductPrice";
 import "./product-slide.scss";
 
 export interface ProductSlideProps {
@@ -23,7 +24,7 @@ export function ProductSlide({
       <h2 className={block("title")} lang="en">
         {title}
       </h2>
-      <span className={block("price")}>$ {price.toFixed(2)}</span>
+      <span className={block("price")}>{getProductPrice(price)}</span>
       <Button className={block("cta")} variant="outlined-white">
         {cta ?? "Смотреть"}
       </Button>

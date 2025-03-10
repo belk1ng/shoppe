@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { productsService } from "@/entities/product";
+import { ProductInfo } from "@/widgets/product-info";
 import type { ProductPageProps } from "../model/types";
 
 export async function Product({ params }: ProductPageProps) {
@@ -11,7 +12,7 @@ export async function Product({ params }: ProductPageProps) {
 
   return (
     <main>
-      <pre>{JSON.stringify(product, null, 2)}</pre>
+      <ProductInfo product={product} />
     </main>
   );
 }

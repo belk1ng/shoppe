@@ -7,7 +7,10 @@ import { useRating } from "./useRating";
 import "./rating.scss";
 
 export interface RatingProps
-  extends Omit<HTMLAttributes<HTMLDivElement>, "defaultValue"> {
+  extends Omit<
+    HTMLAttributes<HTMLDivElement>,
+    "defaultValue" | "defaultChecked"
+  > {
   name: string;
   totalRating?: number;
   defaultValue?: Nullable<number>;

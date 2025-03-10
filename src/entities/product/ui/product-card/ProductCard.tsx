@@ -1,7 +1,8 @@
 import Image from "next/image";
-import type { Product } from "@/entities/product";
 import { cn } from "@/shared/lib";
 import { PatchedLink } from "@/shared/ui";
+import { getProductPrice } from "../../lib/getProductPrice";
+import { Product } from "../../model/types";
 import "./product-card.scss";
 
 export interface ProductCardProps {
@@ -36,7 +37,7 @@ export function ProductCard({ product, className, heading }: ProductCardProps) {
       >
         {product.name}
       </PatchedLink>
-      <p className={block("price")}>$ {product.price.toFixed(2)}</p>
+      <p className={block("price")}>{getProductPrice(product.price)}</p>
     </article>
   );
 }
