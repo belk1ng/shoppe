@@ -5,8 +5,8 @@ import {
   ProductImages,
 } from "@/entities/product";
 import { Rating } from "@/entities/review";
+import { AddToCart } from "@/features/add-to-cart";
 import { cn, getRussianPluralForm } from "@/shared/lib";
-import { Counter } from "@/shared/ui";
 import "./product-info.scss";
 
 export interface ProductInfoProps {
@@ -44,7 +44,7 @@ export function ProductInfo({ product, className }: ProductInfoProps) {
 
         <p className={block("description")}>{product.description}</p>
 
-        <Counter />
+        <AddToCart product={product} />
       </div>
     </section>
   );

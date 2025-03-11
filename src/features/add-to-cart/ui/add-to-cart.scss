@@ -1,0 +1,12 @@
+@use "src/shared/styles/mixins";
+@use "src/shared/styles/variables";
+
+.addToCart {
+  gap: 1em;
+  font-size: 1rem;
+  @include mixins.flex-center-y;
+
+  &__button {
+    flex: 1;
+  }
+}

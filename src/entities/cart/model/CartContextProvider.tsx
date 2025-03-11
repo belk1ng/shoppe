@@ -5,4 +5,4 @@ import { useCart } from "./useCart";
 
 export const [CartContextProvider, useCartContext] = createSafeContext<
   ReturnType<typeof useCart>
->("CartProvider not found");
+>("CartContextProvider not found");

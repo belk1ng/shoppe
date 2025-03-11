@@ -1,29 +1,39 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { CART_PERSIST } from "../lib/constants";
+import { useDebounceCallback } from "@/shared/hooks";
+import { updateCartCookie } from "./actions";
+import { CART_KEY } from "../lib/constants";
 import type { CartItem, CartValues } from "../model/types";
 
-export const useCart = () => {
-  const [items, setItems] = useState<CartValues>([]);
+export const useCart = (cartInitialItems: CartValues) => {
+  const [items, setItems] = useState<CartValues>(cartInitialItems);
 
   useEffect(() => {
-    const persistedItems = localStorage.getItem(CART_PERSIST);
+    const persistedItems = localStorage.getItem(CART_KEY);
     if (persistedItems) {
       setItems(JSON.parse(persistedItems));
     }
   }, []);
 
   const updateLocalStorage = useCallback((items: CartValues) => {
-    localStorage.setItem(CART_PERSIST, JSON.stringify(items));
+    localStorage.setItem(CART_KEY, JSON.stringify(items));
   }, []);
+
+  const debouncedUpdateCartCookie = useDebounceCallback(updateCartCookie, 300);
 
   useEffect(() => {
     updateLocalStorage(items);
-  }, [items, updateLocalStorage]);
+    debouncedUpdateCartCookie(items);
+  }, [items, updateLocalStorage, debouncedUpdateCartCookie]);
 
   const itemsCount = useMemo(
     () => items.reduce((acc, curr) => (acc += curr.count), 0),
+    [items]
+  );
+
+  const getItemCount = useCallback(
+    (sku: number) => items.find((item) => item.sku === sku)?.count ?? 0,
     [items]
   );
 
@@ -48,7 +58,15 @@ export const useCart = () => {
       addCartItem,
       removeCartItem,
       patchCartItemCount,
+      getItemCount,
     }),
-    [items, itemsCount, addCartItem, removeCartItem, patchCartItemCount]
+    [
+      items,
+      itemsCount,
+      addCartItem,
+      removeCartItem,
+      patchCartItemCount,
+      getItemCount,
+    ]
   );
 };

@@ -8,10 +8,13 @@ export const useCounter = (
 
   useEffect(() => {
     onChange?.(value);
-  }, [value, onChange]);
+    // eslint-disable-next-line
+  }, [value]);
 
   const increment = useCallback(() => {
-    setValue((prev) => prev + 1);
+    setValue((prev) => {
+      return prev + 1;
+    });
   }, []);
 
   const decrement = useCallback(() => {
