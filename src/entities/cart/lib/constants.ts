@@ -1,1 +1,1 @@
-export const CART_PERSIST = "cart";
+export const CART_KEY = "cart";

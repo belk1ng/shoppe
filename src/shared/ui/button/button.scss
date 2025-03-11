@@ -43,7 +43,9 @@
     border: 1px solid currentcolor;
     color: variables.$black;
     background-color: transparent;
-    transition: color 0.25s ease-in-out;
+    transition:
+      color 0.25s ease-in-out,
+      scale 0.15s ease-in-out;
   }
 
   &--outlinedWhite {

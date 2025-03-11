@@ -1,6 +1,6 @@
 import { Open_Sans } from "next/font/google";
-import type { ReactNode } from "react";
-import { CartProvider } from "@/entities/cart";
+import type { PropsWithChildren } from "react";
+import { CartProvider, getCartCookie } from "@/entities/cart";
 import { ProgressBar } from "@/shared/ui/progress-bar";
 import { Footer } from "@/widgets/footer";
 import { Header } from "@/widgets/header";
@@ -58,16 +58,14 @@ export const metadata = {
   manifest: "/site.webmanifest",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: ReactNode;
-}>) {
+export default async function RootLayout({ children }: PropsWithChildren) {
+  const cart = await getCartCookie();
+
   return (
-    <html lang="en">
+    <html lang="ru">
       <body className={openSans.className}>
         <ProgressBar>
-          <CartProvider>
+          <CartProvider cartInitialState={cart}>
             <Header />
             {children}
             <Footer />
