@@ -1,0 +1,23 @@
+@use "src/shared/styles/mixins";
+@use "src/shared/styles/variables";
+
+.cartIcon {
+  position: relative;
+  font-size: 1rem;
+
+  &__badge {
+    position: absolute;
+    top: -15%;
+    right: -25%;
+
+    border-radius: 50%;
+
+    font-size: 0.4375em;
+    color: variables.$white;
+
+    background-color: variables.$red;
+
+    @include mixins.square-size(2em);
+    @include mixins.flex-center;
+  }
+}

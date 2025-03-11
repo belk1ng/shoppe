@@ -1,6 +1,7 @@
 import Image from "next/image";
+import { CartIcon } from "@/entities/cart";
 import { Navigation, type NavigationItem } from "@/features/navigation";
-import { Cart, Favorite, Profile } from "@/shared/assets";
+import { Favorite, Profile } from "@/shared/assets";
 import { cn } from "@/shared/lib";
 import { PatchedLink } from "@/shared/ui";
 import "./header.scss";
@@ -24,7 +25,7 @@ const ITEMS: NavigationItem[] = [
   {
     type: "link",
     ariaLabel: "Корзина",
-    label: <Cart aria-hidden={true} />,
+    label: <CartIcon />,
     path: "/cart",
   },
   {

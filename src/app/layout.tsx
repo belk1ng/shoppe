@@ -1,5 +1,6 @@
 import { Open_Sans } from "next/font/google";
 import type { ReactNode } from "react";
+import { CartProvider } from "@/entities/cart";
 import { ProgressBar } from "@/shared/ui/progress-bar";
 import { Footer } from "@/widgets/footer";
 import { Header } from "@/widgets/header";
@@ -66,9 +67,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={openSans.className}>
         <ProgressBar>
-          <Header />
-          {children}
-          <Footer />
+          <CartProvider>
+            <Header />
+            {children}
+            <Footer />
+          </CartProvider>
         </ProgressBar>
       </body>
     </html>
