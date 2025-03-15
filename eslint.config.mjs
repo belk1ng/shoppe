@@ -79,10 +79,49 @@ const eslintConfig = [
             "index",
             "unknown",
           ],
+          pathGroups: [
+            {
+              pattern: "@/app/**",
+              group: "internal",
+              position: "before",
+            },
+            {
+              pattern: "@/views/**",
+              group: "internal",
+              position: "before",
+            },
+            {
+              pattern: "@/widgets/**",
+              group: "internal",
+              position: "before",
+            },
+            {
+              pattern: "@/features/**",
+              group: "internal",
+              position: "before",
+            },
+            {
+              pattern: "@/entities/**",
+              group: "internal",
+              position: "before",
+            },
+            {
+              pattern: "@/shared/**",
+              group: "internal",
+              position: "before",
+            },
+            {
+              pattern: "*.{css,scss,sass,less}",
+              group: "unknown",
+              position: "after",
+            },
+          ],
+          pathGroupsExcludedImportTypes: ["builtin", "external"],
           alphabetize: {
             order: "asc",
             caseInsensitive: true,
           },
+          "newlines-between": "never",
         },
       ],
       "jsx-a11y/alt-text": "error",

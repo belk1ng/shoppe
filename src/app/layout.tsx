@@ -1,9 +1,9 @@
 import { Open_Sans } from "next/font/google";
 import type { PropsWithChildren } from "react";
-import { CartProvider, getCartCookie } from "@/entities/cart";
-import { ProgressBar } from "@/shared/ui/progress-bar";
 import { Footer } from "@/widgets/footer";
 import { Header } from "@/widgets/header";
+import { CartProvider, getCartCookie } from "@/entities/cart";
+import { ProgressBar } from "@/shared/ui/progress-bar";
 import "@/shared/styles/main.scss";
 
 const openSans = Open_Sans({

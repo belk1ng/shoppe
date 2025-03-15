@@ -1,9 +1,9 @@
 import { notFound } from "next/navigation";
+import { ProductInfo } from "@/widgets/product-info";
 import { productsService } from "@/entities/product";
 import { ReviewCard } from "@/entities/review";
 import { cn } from "@/shared/lib";
 import { Tabs } from "@/shared/ui";
-import { ProductInfo } from "@/widgets/product-info";
 import type { ProductPageProps } from "../model/types";
 import "./product.scss";
 

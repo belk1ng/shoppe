@@ -3,8 +3,8 @@
 import type { Product } from "@/entities/product";
 import { cn } from "@/shared/lib";
 import { Button, Counter } from "@/shared/ui";
-import "./add-to-cart.scss";
 import { useAddToCart } from "../model/useAddToCart";
+import "./add-to-cart.scss";
 
 export interface AddToCartProps {
   className?: string;

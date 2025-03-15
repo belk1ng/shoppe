@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { CartIcon } from "@/entities/cart";
 import { Navigation, type NavigationItem } from "@/features/navigation";
+import { CartIcon } from "@/entities/cart";
 import { Favorite, Profile } from "@/shared/assets";
 import { cn } from "@/shared/lib";
 import { PatchedLink } from "@/shared/ui";
