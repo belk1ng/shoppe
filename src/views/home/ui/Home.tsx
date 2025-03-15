@@ -1,16 +1,17 @@
 import { ProductsGrid, ProductSlide } from "@/entities/product";
-import FirstSlidePic from "@/shared/assets/images/slide-1.webp";
-import SecondSlidePic from "@/shared/assets/images/slide-2.webp";
 import { cn } from "@/shared/lib";
-import { Carousel } from "@/shared/ui";
-import { PatchedLink } from "@/shared/ui";
+import { Carousel, PatchedLink } from "@/shared/ui";
+import { getCarouselData } from "../model/getCarouselData";
 import { getRecentProducts } from "../model/getRecentProducts";
 import "./home.scss";
 
 const block = cn("home");
 
 export async function Home() {
-  const products = await getRecentProducts();
+  const [products, carouselItems] = await Promise.all([
+    getRecentProducts(),
+    getCarouselData(),
+  ]);
 
   return (
     <main className={block()}>
@@ -19,36 +20,14 @@ export async function Home() {
       {/*TODO: Add route handler for carousel items*/}
       <section className={block("carousel")}>
         <Carousel autoPlayInterval={5_000}>
-          <ProductSlide
-            imageSrc={FirstSlidePic}
-            price={68}
-            title="Gold big hoops"
-          />
-          <ProductSlide
-            imageSrc={SecondSlidePic}
-            price={75}
-            title="Lira Earrings"
-          />
-          <ProductSlide
-            imageSrc={FirstSlidePic}
-            price={23}
-            title="Hal Earrings"
-          />
-          <ProductSlide
-            imageSrc={SecondSlidePic}
-            price={10}
-            title="Kaede Hair Pin"
-          />
-          <ProductSlide
-            imageSrc={FirstSlidePic}
-            price={12}
-            title="Plaine Necklace"
-          />
-          <ProductSlide
-            imageSrc={SecondSlidePic}
-            price={199}
-            title="Yuki Hair Pin Set of 3"
-          />
+          {carouselItems.data.map((item, index) => (
+            <ProductSlide
+              imageSrc={item.src}
+              key={index}
+              price={item.price}
+              title={item.title}
+            />
+          ))}
         </Carousel>
       </section>
 
