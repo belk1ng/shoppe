@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { productsService } from "@/entities/product";
+import { ReviewCard } from "@/entities/review";
 import { cn } from "@/shared/lib";
 import { Tabs } from "@/shared/ui";
 import { ProductInfo } from "@/widgets/product-info";
@@ -24,7 +25,13 @@ export async function Product({ params }: ProductPageProps) {
           { title: "Описание", content: product.description },
           {
             title: `Отзывы (${product.reviews.length})`,
-            content: JSON.stringify(product.reviews),
+            content: (
+              <div className={block("reviews")}>
+                {product.reviews.map((review, index) => (
+                  <ReviewCard heading="h2" key={index} review={review} />
+                ))}
+              </div>
+            ),
           },
         ]}
       />

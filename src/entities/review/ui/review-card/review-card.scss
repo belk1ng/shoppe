@@ -1,0 +1,32 @@
+@use "src/shared/styles/mixins";
+@use "src/shared/styles/variables";
+
+.reviewCard {
+  gap: 0.875em;
+  font-size: 1rem;
+  @include mixins.flex-column;
+
+  &__header {
+    gap: 1.25em;
+    @include mixins.flex-center-y;
+  }
+
+  &__title {
+    font-size: 1.25em;
+    font-weight: 400;
+    color: variables.$black;
+  }
+
+  &__date {
+    font-size: 0.875em;
+    color: variables.$dark-grey;
+  }
+
+  &__footer {
+    margin-block-start: 0.625em;
+  }
+
+  &__description {
+    color: variables.$dark-grey;
+  }
+}
