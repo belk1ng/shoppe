@@ -8,7 +8,7 @@ import "./product-card.scss";
 export interface ProductCardProps {
   product: Product;
   className?: string;
-  heading?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  heading?: Heading;
 }
 
 const block = cn("productCard");

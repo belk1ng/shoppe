@@ -1,3 +1,4 @@
+@use "src/shared/styles/variables";
 @use "src/shared/styles/mixins";
 
 .product {
@@ -5,4 +6,22 @@
   margin-block: 2em;
   font-size: 1rem;
   @include mixins.flex-column;
+
+  &__reviews {
+    @include mixins.flex-column;
+
+    .reviewCard {
+      padding-block: 1.5em;
+      border-bottom: 1px solid variables.$stroke-color;
+
+      &:first-child {
+        padding-block-start: 0;
+      }
+
+      &:last-child {
+        padding-block-end: 0;
+        border: 0;
+      }
+    }
+  }
 }
