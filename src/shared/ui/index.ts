@@ -4,3 +4,4 @@ export * from "./counter";
 export * from "./input";
 export * from "./pagination";
 export * from "./progress-bar";
+export * from "./tabs";

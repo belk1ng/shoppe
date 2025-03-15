@@ -1,2 +1,3 @@
-export { useFilter } from "./useFilter";
+export { useActiveIndex } from "./useActiveIndex";
 export { useDebounceCallback } from "./useDebounceCallback";
+export { useFilter } from "./useFilter";
