@@ -1,0 +1,8 @@
+@use "src/shared/styles/mixins";
+
+.product {
+  gap: 6.25em;
+  margin-block: 2em;
+  font-size: 1rem;
+  @include mixins.flex-column;
+}

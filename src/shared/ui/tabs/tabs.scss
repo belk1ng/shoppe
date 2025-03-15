@@ -1,0 +1,55 @@
+@use "src/shared/styles/mixins";
+@use "src/shared/styles/variables";
+
+.tabs {
+  font-size: 1rem;
+
+  &__list {
+    position: relative;
+    gap: 20px;
+    border-bottom: 1px solid variables.$stroke-color;
+    @include mixins.flex-center-y;
+  }
+
+  &__tab {
+    cursor: pointer;
+
+    padding-block: 1.2em;
+    border: 0;
+
+    font-size: 1.25em;
+    color: variables.$dark-grey;
+
+    background-color: transparent;
+
+    transition: color 0.25s ease;
+
+    &--active {
+      color: variables.$black;
+    }
+
+    @include mixins.hover {
+      color: variables.$black;
+    }
+  }
+
+  &__panel {
+    display: none;
+    padding-block-start: 2.625em;
+
+    &--active {
+      display: block;
+    }
+  }
+
+  &__indicator {
+    position: absolute;
+    bottom: -1px;
+
+    height: 2px;
+
+    background-color: variables.$black;
+
+    transition: all 0.25s ease;
+  }
+}

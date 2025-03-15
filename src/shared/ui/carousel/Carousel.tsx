@@ -18,6 +18,8 @@ export interface CarouselProps {
 
 const block = cn("carousel");
 
+// TODO: Add keyboard navigation
+// TODO: Migrate to `useActiveIndex`
 export function Carousel({
   className,
   autoPlayInterval,
