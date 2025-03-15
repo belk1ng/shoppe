@@ -1,10 +1,10 @@
-import { ProductsGrid } from "@/entities/product";
 import {
   EmptyCatalog,
   FilterForm,
   FilterProvider,
   ProductsPagination,
 } from "@/features/filter-products";
+import { ProductsGrid } from "@/entities/product";
 import { cn } from "@/shared/lib";
 import { getCatalogFilterAndProducts } from "../model/getCatalogFilterAndProducts";
 import type { CatalogPageProps } from "../model/types";

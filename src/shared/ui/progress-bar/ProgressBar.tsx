@@ -2,9 +2,9 @@
 
 import type { PropsWithChildren } from "react";
 import { cn } from "@/shared/lib/cn";
-import "./progress-bar.scss";
 import { ProgressBarProvider } from "./ProgressBarProvider";
 import { ProgressState, useProgress } from "./useProgress";
+import "./progress-bar.scss";
 
 const block = cn("progressBar");
 

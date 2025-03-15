@@ -1,3 +1,4 @@
+import { AddToCart } from "@/features/add-to-cart";
 import {
   type Product,
   getProductAverageRating,
@@ -5,7 +6,6 @@ import {
   ProductImages,
 } from "@/entities/product";
 import { Rating } from "@/entities/review";
-import { AddToCart } from "@/features/add-to-cart";
 import { cn, getRussianPluralForm } from "@/shared/lib";
 import "./product-info.scss";
 
