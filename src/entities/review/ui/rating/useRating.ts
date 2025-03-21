@@ -1,20 +1,32 @@
-import { type KeyboardEvent, useCallback, useRef, useState } from "react";
+import {
+  type KeyboardEvent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import type { RatingProps } from "./Rating";
 
 type UseRatingOptions = Required<
-  Pick<RatingProps, "totalRating" | "defaultValue" | "disabled">
+  Pick<RatingProps, "totalRating" | "value" | "disabled">
 >;
 
 export const useRating = ({
-  defaultValue,
+  value,
   disabled,
   totalRating,
 }: UseRatingOptions) => {
-  const [rating, setRating] = useState(defaultValue);
+  const [rating, setRating] = useState(value);
+
+  useEffect(() => {
+    setRating(value);
+  }, [value]);
 
   const [hoverRating, setHoverRating] = useState<number | null>(null);
 
-  const ratingRefs = useRef<Array<HTMLLabelElement | null>>([]);
+  const ratingRefs = useRef<Array<HTMLButtonElement | null>>(
+    new Array(totalRating).fill(null)
+  );
 
   const onChangeRating = useCallback((index: Nullable<number>) => {
     setRating(index);
@@ -24,7 +36,14 @@ export const useRating = ({
     setHoverRating(index);
   }, []);
 
-  const onKeyDown = (event: KeyboardEvent<HTMLLabelElement>, index: number) => {
+  useEffect(() => {
+    onChangeRating(value);
+  }, [value, onChangeRating]);
+
+  const onKeyDown = (
+    event: KeyboardEvent<HTMLButtonElement>,
+    index: number
+  ) => {
     switch (event.key) {
       case "ArrowRight":
       case "ArrowDown": {
@@ -52,11 +71,6 @@ export const useRating = ({
         event.preventDefault();
         ratingRefs.current[totalRating - 1]?.focus();
         setRating(totalRating);
-        break;
-      }
-      case " ": {
-        event.preventDefault();
-        setRating(index + 1);
         break;
       }
       default:

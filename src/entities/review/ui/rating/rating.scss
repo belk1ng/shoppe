@@ -2,12 +2,24 @@
 @use "src/shared/styles/variables";
 
 .rating {
+  gap: 0.5em;
   font-size: 1rem;
-  @include mixins.flex-center-y;
+  @include mixins.flex-column;
 
-  &__label {
+  &__wrapper {
+    @include mixins.flex-center-y;
+  }
+
+  &__button {
     padding-inline: 0.3125em;
+    border: 0;
     color: variables.$white;
+    background-color: transparent;
+    @include mixins.flex-center;
+
+    &--active {
+      color: variables.$black;
+    }
 
     &:not(&--disabled) {
       cursor: pointer;
@@ -20,13 +32,18 @@
     &:last-of-type {
       padding-inline-end: 0;
     }
-
-    &--active {
-      color: variables.$black;
-    }
   }
 
   &__star {
     fill: currentcolor;
+
+    &--error path {
+      stroke: variables.$red;
+    }
+  }
+
+  &__error {
+    font-size: 0.875em;
+    color: variables.$red;
   }
 }

@@ -1,0 +1,48 @@
+@use "src/shared/styles/mixins";
+@use "src/shared/styles/variables";
+
+.addProductReview {
+  gap: 0.75em;
+  width: 100%;
+  font-size: 1rem;
+  @include mixins.flex-column;
+
+  &--sent {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  &__message {
+    font-size: 1.125em;
+    font-weight: 500;
+    color: variables.$dark-grey;
+  }
+
+  &__title {
+    font-size: 1.25em;
+    font-weight: 400;
+  }
+
+  &__subtitle {
+    font-size: 0.8125em;
+    color: variables.$dark-grey;
+  }
+
+  &__form {
+    gap: 2.875em;
+    margin-block-start: 2em;
+    @include mixins.flex-column;
+  }
+
+  &__rating {
+    gap: 1em;
+    font-size: 0.875em;
+    color: variables.$dark-grey;
+    @include mixins.flex-column;
+  }
+
+  &__button {
+    align-self: flex-start;
+  }
+}

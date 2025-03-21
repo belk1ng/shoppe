@@ -8,6 +8,11 @@
   @include mixins.flex-column;
 
   &__reviews {
+    display: flex;
+    gap: 5em;
+  }
+
+  &__reviewsList {
     @include mixins.flex-column;
 
     .reviewCard {
@@ -23,5 +28,10 @@
         border: 0;
       }
     }
+  }
+
+  &__reviewList,
+  &__reviewForm {
+    flex: 1 1 auto;
   }
 }

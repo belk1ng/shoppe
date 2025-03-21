@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { ProductInfo } from "@/widgets/product-info";
+import { AddProductReview } from "@/features/add-product-review";
 import { productsService } from "@/entities/product";
 import { generateProductJsonLd } from "@/entities/product";
 import { ReviewCard } from "@/entities/review";
@@ -31,9 +32,16 @@ export async function Product({ params }: ProductPageProps) {
             title: `Отзывы (${product.reviews.length})`,
             content: (
               <div className={block("reviews")}>
-                {product.reviews.map((review, index) => (
-                  <ReviewCard heading="h2" key={index} review={review} />
-                ))}
+                <div className={block("reviewsList")}>
+                  {product.reviews.map((review, index) => (
+                    <ReviewCard heading="h2" key={index} review={review} />
+                  ))}
+                </div>
+
+                <AddProductReview
+                  className={block("reviewForm")}
+                  sku={product.sku}
+                />
               </div>
             ),
           },

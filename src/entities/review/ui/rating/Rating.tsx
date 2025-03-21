@@ -9,12 +9,13 @@ import "./rating.scss";
 export interface RatingProps
   extends Omit<
     HTMLAttributes<HTMLDivElement>,
-    "defaultValue" | "defaultChecked"
+    "defaultValue" | "defaultChecked" | "onChange"
   > {
-  name: string;
+  name?: string;
   totalRating?: number;
-  defaultValue?: Nullable<number>;
+  value?: Nullable<number>;
   disabled?: boolean;
+  errorMessage?: string;
 }
 
 const block = cn("rating");
@@ -24,53 +25,74 @@ export function Rating({
   className,
   name,
   disabled = false,
-  defaultValue = null,
+  value,
+  errorMessage,
   ...props
 }: RatingProps) {
   const {
     rating,
+    onChangeRating,
     hoverRating,
     ratingRefs,
-    onChangeRating,
     onChangeHoverRating,
     onKeyDown,
-  } = useRating({ defaultValue, disabled, totalRating });
+  } = useRating({
+    value: value || null,
+    disabled,
+    totalRating,
+  });
 
   return (
-    <div {...props} className={block("", [className])} role="radiogroup">
-      {Array.from({ length: totalRating }, () => null).map((_, index) => (
-        <label
-          aria-checked={rating === index + 1}
-          aria-label={getRussianPluralForm(index + 1, [
-            "звезда",
-            "звезды",
-            "звезд",
-          ])}
-          className={block("label", {
-            active: index + 1 <= (hoverRating || rating || 0),
-            disabled,
-          })}
-          key={index}
-          onKeyDown={(e) => onKeyDown?.(e, index)}
-          onMouseEnter={() => onChangeHoverRating?.(index + 1)}
-          onMouseLeave={() => onChangeHoverRating?.(null)}
-          ref={(el) => {
-            ratingRefs.current.push(el);
-          }}
-          role="radio"
-          tabIndex={(rating ?? 1) === index + 1 ? 0 : -1}
-        >
-          <input
-            className={block("field")}
-            hidden
-            name={name}
-            onChange={() => onChangeRating?.(index + 1)}
-            type="radio"
-            value={index + 1}
-          />
-          <Star className={block("star")} />
-        </label>
-      ))}
+    <div {...props} className={block("", [className])}>
+      <div className={block("wrapper")} role="radiogroup">
+        {Array.from({ length: totalRating }, () => null).map((_, index) => (
+          <button
+            aria-checked={rating === index + 1}
+            aria-label={getRussianPluralForm(index + 1, [
+              "звезда",
+              "звезды",
+              "звезд",
+            ])}
+            className={block("button", {
+              active: index + 1 <= (hoverRating || rating || 0),
+              disabled,
+            })}
+            key={index}
+            onClick={() => onChangeRating?.(index + 1)}
+            onKeyDown={(e) => onKeyDown?.(e, index)}
+            onMouseEnter={() => onChangeHoverRating?.(index + 1)}
+            onMouseLeave={() => onChangeHoverRating?.(null)}
+            ref={(el) => {
+              ratingRefs.current[index] = el;
+            }}
+            role="radio"
+            tabIndex={(rating ?? 1) === index + 1 && !disabled ? 0 : -1}
+            type="button"
+          >
+            {name && (
+              <input
+                checked={rating === index + 1}
+                hidden
+                name={name}
+                readOnly
+                type="radio"
+                value={index + 1}
+              />
+            )}
+            <Star
+              className={block("star", {
+                error: !!errorMessage,
+              })}
+            />
+          </button>
+        ))}
+      </div>
+
+      {errorMessage && (
+        <p aria-live="assertive" className={block("error")} role="alert">
+          {errorMessage}
+        </p>
+      )}
     </div>
   );
 }
