@@ -28,11 +28,7 @@ export function ProductInfo({ product, className }: ProductInfoProps) {
         <p className={block("price")}>{getProductPrice(product.price)}</p>
 
         <div className={block("reviewsContainer")}>
-          <Rating
-            defaultValue={getProductAverageRating(product)}
-            disabled
-            name="product-rating"
-          />
+          <Rating disabled value={getProductAverageRating(product)} />
           <p className={block("reviewsCount")}>
             {getRussianPluralForm(product.reviews.length, [
               "отзыв",

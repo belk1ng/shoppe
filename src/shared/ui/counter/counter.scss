@@ -13,6 +13,10 @@
   background-color: variables.$light-grey;
   @include mixins.flex-center;
 
+  &__value {
+    user-select: none;
+  }
+
   &__action {
     cursor: pointer;
     user-select: none;
@@ -23,8 +27,14 @@
 
     background-color: transparent;
 
+    transition: 0.25s ease;
+
     &[disabled] {
       cursor: not-allowed;
+    }
+
+    @include mixins.hover {
+      color: variables.$black;
     }
   }
 }

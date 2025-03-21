@@ -33,7 +33,7 @@ export function Counter({
       >
         -
       </button>
-      <output aria-live="polite">
+      <output aria-live="polite" className={block("value")}>
         <span className="visuallyHidden">Текущее количество:</span>
         {value}
       </output>

@@ -9,6 +9,7 @@ export interface InputProps
   label: string;
   startIcon?: ReactNode;
   endIcon?: ReactNode;
+  errorMessage?: string;
 }
 
 const block = cn("input");
@@ -19,18 +20,33 @@ export function Input({
   label,
   startIcon,
   endIcon,
+  errorMessage,
   ...props
 }: InputProps) {
   const _id = useId();
 
   return (
     <div className={block("", [className])}>
-      {startIcon}
-      <label className="visuallyHidden" htmlFor={id ?? _id}>
-        {label}
-      </label>
-      <input className={block("field")} id={id ?? _id} {...props} type="text" />
-      {endIcon}
+      <div className={block("wrapper", { error: !!errorMessage })}>
+        {startIcon}
+        <label className="visuallyHidden" htmlFor={id ?? _id}>
+          {label}
+        </label>
+        <input
+          aria-invalid={Boolean(errorMessage)}
+          className={block("field")}
+          id={id ?? _id}
+          {...props}
+          type="text"
+        />
+        {endIcon}
+      </div>
+
+      {errorMessage && (
+        <p aria-live="assertive" className={block("error")} role="alert">
+          {errorMessage}
+        </p>
+      )}
     </div>
   );
 }

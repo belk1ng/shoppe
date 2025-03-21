@@ -26,12 +26,7 @@ export function ReviewCard({ review, className, heading }: ReviewCardProps) {
         <Heading className={block("title")}>{review.name}</Heading>
         <span className={block("date")}>{date}</span>
       </header>
-      <Rating
-        className={block("rating")}
-        defaultValue={review.rating}
-        disabled
-        name="review-rating"
-      />
+      <Rating className={block("rating")} disabled value={review.rating} />
       <footer className={block("footer")}>
         <p className={block("description")}>{review.description}</p>
       </footer>

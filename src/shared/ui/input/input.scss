@@ -2,13 +2,22 @@
 @use "src/shared/styles/variables";
 
 .input {
-  border-block-end: 1px solid variables.$stroke-color;
+  gap: 0.5em;
   font-size: 1rem;
-  transition: border-color 0.25s ease-in-out;
-  @include mixins.flex-center-y;
+  @include mixins.flex-column;
 
-  &:hover {
-    border-block-end-color: variables.$dark-grey;
+  &__wrapper {
+    border-block-end: 1px solid variables.$stroke-color;
+    transition: border-color 0.25s ease-in-out;
+    @include mixins.flex-center-y;
+
+    &--error {
+      border-color: variables.$red;
+    }
+
+    &:hover:not(&--error) {
+      border-block-end-color: variables.$dark-grey;
+    }
   }
 
   &:focus-within {
@@ -21,12 +30,17 @@
     border: 0;
 
     &::placeholder {
-      font-size: 1em;
+      font-size: 0.875em;
       color: variables.$dark-grey;
     }
 
     &:focus-visible {
       box-shadow: none !important;
     }
+  }
+
+  &__error {
+    font-size: 0.875em;
+    color: variables.$red;
   }
 }

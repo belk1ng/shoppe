@@ -118,6 +118,7 @@ export function ProductImages({ images, className }: ProductImagesProps) {
             height={600}
             id={prefixId + index}
             key={index}
+            priority
             src={images[activeImage]}
             width={540}
           />
