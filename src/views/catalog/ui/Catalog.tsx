@@ -1,3 +1,5 @@
+"use server";
+
 import {
   EmptyCatalog,
   FilterForm,
@@ -32,6 +34,7 @@ export async function Catalog({ searchParams }: CatalogPageProps) {
         data={generateProductsListJsonLd(productsResponse.products, {
           name: "Каталог",
         })}
+        id="catalog-json-ld"
       />
 
       <section className={block("container")}>
