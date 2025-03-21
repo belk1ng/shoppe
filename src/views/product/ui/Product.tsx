@@ -1,9 +1,11 @@
 import { notFound } from "next/navigation";
 import { ProductInfo } from "@/widgets/product-info";
 import { productsService } from "@/entities/product";
+import { generateProductJsonLd } from "@/entities/product";
 import { ReviewCard } from "@/entities/review";
 import { cn } from "@/shared/lib";
 import { Tabs } from "@/shared/ui";
+import { JsonLd } from "@/shared/ui/json-ld";
 import type { ProductPageProps } from "../model/types";
 import "./product.scss";
 
@@ -18,6 +20,8 @@ export async function Product({ params }: ProductPageProps) {
 
   return (
     <main className={block()}>
+      <JsonLd data={generateProductJsonLd(product)} />
+
       <ProductInfo className={block("info")} product={product} />
       <Tabs
         className={block("tabs")}

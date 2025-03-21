@@ -1,6 +1,11 @@
-import { ProductsGrid, ProductSlide } from "@/entities/product";
+import {
+  generateProductsListJsonLd,
+  ProductsGrid,
+  ProductSlide,
+} from "@/entities/product";
 import { cn } from "@/shared/lib";
 import { Carousel, PatchedLink } from "@/shared/ui";
+import { JsonLd } from "@/shared/ui/json-ld";
 import { getCarouselData } from "../model/getCarouselData";
 import { getRecentProducts } from "../model/getRecentProducts";
 import "./home.scss";
@@ -15,9 +20,14 @@ export async function Home() {
 
   return (
     <main className={block()}>
+      <JsonLd
+        data={generateProductsListJsonLd(products, {
+          name: "Последние поступления",
+        })}
+      />
+
       <h1 className="visuallyHidden">Главная страница</h1>
 
-      {/*TODO: Add route handler for carousel items*/}
       <section className={block("carousel")}>
         <Carousel autoPlayInterval={5_000}>
           {carouselItems.data.map((item, index) => (
