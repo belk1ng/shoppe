@@ -4,8 +4,9 @@ import {
   FilterProvider,
   ProductsPagination,
 } from "@/features/filter-products";
-import { ProductsGrid } from "@/entities/product";
+import { generateProductsListJsonLd, ProductsGrid } from "@/entities/product";
 import { cn } from "@/shared/lib";
+import { JsonLd } from "@/shared/ui/json-ld";
 import { getCatalogFilterAndProducts } from "../model/getCatalogFilterAndProducts";
 import type { CatalogPageProps } from "../model/types";
 import "./catalog.scss";
@@ -27,6 +28,12 @@ export async function Catalog({ searchParams }: CatalogPageProps) {
 
   return (
     <main className={block()}>
+      <JsonLd
+        data={generateProductsListJsonLd(productsResponse.products, {
+          name: "Каталог",
+        })}
+      />
+
       <section className={block("container")}>
         <header className={block("heading")}>
           <h1 className={block("title")}>Каталог товаров</h1>

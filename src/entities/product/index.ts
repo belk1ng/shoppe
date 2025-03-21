@@ -1,8 +1,10 @@
 export { productsService } from "./api/products";
 export * from "./api/types";
 export * from "./model/types";
-export * from "./lib/getProductPrice";
-export * from "./lib/getProductAverageRating";
+export { getProductPrice } from "./lib/getProductPrice";
+export { getProductAverageRating } from "./lib/getProductAverageRating";
+export { generateProductJsonLd } from "./lib/generateProductJsonLd";
+export { generateProductsListJsonLd } from "./lib/generateProductsListJsonLd";
 export { ProductCard, type ProductCardProps } from "./ui/product-card";
 export { ProductImages, type ProductImagesProps } from "./ui/product-images";
 export { ProductSlide, type ProductSlideProps } from "./ui/product-slide";
