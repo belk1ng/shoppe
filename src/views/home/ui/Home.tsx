@@ -24,6 +24,7 @@ export async function Home() {
         data={generateProductsListJsonLd(products, {
           name: "Последние поступления",
         })}
+        id="last-products-json-ld"
       />
 
       <h1 className="visuallyHidden">Главная страница</h1>

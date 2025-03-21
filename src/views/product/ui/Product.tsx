@@ -21,8 +21,7 @@ export async function Product({ params }: ProductPageProps) {
 
   return (
     <main className={block()}>
-      <JsonLd data={generateProductJsonLd(product)} />
-
+      <JsonLd data={generateProductJsonLd(product)} id="product-json-ld" />
       <ProductInfo className={block("info")} product={product} />
       <Tabs
         className={block("tabs")}
