@@ -1,4 +1,4 @@
-export interface CartItem {
+export interface CartItemSchema {
   image: string;
   count: number;
   name: string;
@@ -6,4 +6,4 @@ export interface CartItem {
   sku: number;
 }
 
-export type CartValues = CartItem[];
+export type CartValues = CartItemSchema[];

@@ -41,7 +41,8 @@ describe("Input component", () => {
   it("should apply custom className", () => {
     render(<Input className="custom-class" label="Test Label" />);
 
-    const inputWrapper = screen.getByRole("textbox").parentElement;
+    const inputWrapper =
+      screen.getByRole("textbox").parentElement?.parentElement;
     expect(inputWrapper).toHaveClass("custom-class");
   });
 

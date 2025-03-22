@@ -1,9 +1,10 @@
 "use client";
 
+import { productToCartItem } from "@/features/add-to-cart/lib/productToCartItem";
+import { useCartContext } from "@/entities/cart";
 import type { Product } from "@/entities/product";
 import { cn } from "@/shared/lib";
 import { Button, Counter } from "@/shared/ui";
-import { useAddToCart } from "../model/useAddToCart";
 import "./add-to-cart.scss";
 
 export interface AddToCartProps {
@@ -14,8 +15,9 @@ export interface AddToCartProps {
 const block = cn("addToCart");
 
 export function AddToCart({ className, product }: AddToCartProps) {
-  const { productCount, addProductToCart, updateProductCount } =
-    useAddToCart(product);
+  const { getItemCount, addCartItem, patchCartItemCount } = useCartContext();
+
+  const productCount = getItemCount(product.sku);
 
   return (
     <div className={block("", [className])}>
@@ -27,13 +29,13 @@ export function AddToCart({ className, product }: AddToCartProps) {
           <Counter
             className={block("counter")}
             defaultValue={productCount}
-            onChange={updateProductCount}
+            onChange={(count) => patchCartItemCount(product.sku, count)}
           />
         </>
       ) : (
         <Button
           className={block("button")}
-          onClick={addProductToCart}
+          onClick={() => addCartItem(productToCartItem(product, 1))}
           variant="contained-black"
         >
           Добавить в корзину

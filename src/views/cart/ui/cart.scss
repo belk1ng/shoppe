@@ -1,0 +1,34 @@
+@use "src/shared/styles/mixins";
+@use "src/shared/styles/variables";
+
+.cart {
+  display: grid;
+  grid-template-columns: 55% 45%;
+  grid-template-rows: auto 1fr;
+
+  margin-block: 7em;
+
+  font-size: 1rem;
+
+  &__title {
+    grid-column: span 2;
+
+    margin-block-end: 2em;
+
+    font-size: 2.0625em;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  &__item {
+    padding-block: 2.5em;
+
+    &:not(:last-of-type) {
+      border-block-end: 1px solid variables.$stroke-color;
+    }
+  }
+
+  &__payment {
+    @include mixins.flex-center;
+  }
+}
