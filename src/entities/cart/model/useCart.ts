@@ -4,7 +4,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { useDebounceCallback } from "@/shared/hooks";
 import { updateCartCookie } from "./actions";
 import { CART_KEY } from "../lib/constants";
-import type { CartItem, CartValues } from "../model/types";
+import type { CartItemSchema, CartValues } from "../model/types";
 
 export const useCart = (cartInitialItems: CartValues) => {
   const [items, setItems] = useState<CartValues>(cartInitialItems);
@@ -37,7 +37,7 @@ export const useCart = (cartInitialItems: CartValues) => {
     [items]
   );
 
-  const addCartItem = useCallback((item: CartItem) => {
+  const addCartItem = useCallback((item: CartItemSchema) => {
     setItems((prev) => [item, ...prev]);
   }, []);
 
@@ -45,11 +45,18 @@ export const useCart = (cartInitialItems: CartValues) => {
     setItems((prev) => prev.filter((item) => item.sku !== sku));
   }, []);
 
-  const patchCartItemCount = useCallback((sku: number, count: number) => {
-    setItems((prev) =>
-      prev.map((item) => (item.sku === sku ? { ...item, count } : item))
-    );
-  }, []);
+  const patchCartItemCount = useCallback(
+    (sku: number, count: number) => {
+      if (!count) {
+        removeCartItem(sku);
+      } else {
+        setItems((prev) =>
+          prev.map((item) => (item.sku === sku ? { ...item, count } : item))
+        );
+      }
+    },
+    [removeCartItem]
+  );
 
   return useMemo(
     () => ({
