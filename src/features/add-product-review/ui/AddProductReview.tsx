@@ -3,8 +3,7 @@
 import { useActionState, useEffect } from "react";
 import { Rating } from "@/entities/review";
 import { cn } from "@/shared/lib";
-import { Button, Input } from "@/shared/ui";
-import { useSnackbarContext } from "@/shared/ui/snackbar";
+import { Button, Input, useSnackbarContext } from "@/shared/ui";
 import { getProductReviewDefaults } from "../lib/getProductReviewDefaults";
 import { createReview } from "../model/createReview";
 import "./add-product-review.scss";

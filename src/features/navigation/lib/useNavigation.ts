@@ -24,6 +24,7 @@ export const useNavigation = (items: NavigationItem[]) => {
     [pathname]
   );
 
+  // FIXME: Generate array with items length nulls
   const linksRef = useRef<Nullable<HTMLAnchorElement>[]>([]);
 
   useEffect(() => {

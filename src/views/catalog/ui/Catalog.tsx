@@ -8,7 +8,7 @@ import {
 } from "@/features/filter-products";
 import { generateProductsListJsonLd, ProductsGrid } from "@/entities/product";
 import { cn } from "@/shared/lib";
-import { JsonLd } from "@/shared/ui/json-ld";
+import { JsonLd } from "@/shared/ui";
 import { getCatalogFilterAndProducts } from "../model/getCatalogFilterAndProducts";
 import type { CatalogPageProps } from "../model/types";
 import "./catalog.scss";
