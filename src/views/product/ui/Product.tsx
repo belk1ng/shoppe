@@ -6,7 +6,7 @@ import { generateProductJsonLd } from "@/entities/product";
 import { ReviewCard } from "@/entities/review";
 import { cn } from "@/shared/lib";
 import { Tabs } from "@/shared/ui";
-import { JsonLd } from "@/shared/ui/json-ld";
+import { JsonLd } from "@/shared/ui";
 import type { ProductPageProps } from "../model/types";
 import "./product.scss";
 
@@ -29,6 +29,7 @@ export async function Product({ params }: ProductPageProps) {
           { title: "Описание", content: product.description },
           {
             title: `Отзывы (${product.reviews.length})`,
+            scrollIntoView: true,
             content: (
               <div className={block("reviews")}>
                 <div className={block("reviewsList")}>

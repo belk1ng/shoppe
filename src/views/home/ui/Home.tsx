@@ -5,7 +5,7 @@ import {
 } from "@/entities/product";
 import { cn } from "@/shared/lib";
 import { Carousel, PatchedLink } from "@/shared/ui";
-import { JsonLd } from "@/shared/ui/json-ld";
+import { JsonLd } from "@/shared/ui";
 import { getCarouselData } from "../model/getCarouselData";
 import { getRecentProducts } from "../model/getRecentProducts";
 import "./home.scss";

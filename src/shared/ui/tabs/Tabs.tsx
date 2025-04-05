@@ -8,6 +8,7 @@ import "./tabs.scss";
 interface Tab {
   title: ReactNode;
   content: ReactNode;
+  scrollIntoView?: boolean;
 }
 
 export interface TabsProps {
@@ -26,6 +27,10 @@ export function Tabs({ className, tabs, defaultActiveTab = 0 }: TabsProps) {
   );
 
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const panelsRef = useRef<Nullable<HTMLDivElement>[]>(
+    new Array(tabs.length).fill(null)
+  );
 
   const activeTabRef = useRef<HTMLButtonElement>(null);
 
@@ -56,7 +61,11 @@ export function Tabs({ className, tabs, defaultActiveTab = 0 }: TabsProps) {
 
   useEffect(() => {
     setIndicatorStyles();
-  }, [setIndicatorStyles, activeIndex]);
+
+    if (tabs[activeIndex].scrollIntoView && panelsRef.current) {
+      panelsRef.current[activeIndex]?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [setIndicatorStyles, activeIndex, tabs]);
 
   const prefixId = useId();
 
@@ -88,6 +97,9 @@ export function Tabs({ className, tabs, defaultActiveTab = 0 }: TabsProps) {
           className={block("panel", { active: activeIndex === index })}
           id={prefixId + index}
           key={index}
+          ref={(node) => {
+            panelsRef.current[index] = node;
+          }}
           role="tabpanel"
         >
           {tab.content}

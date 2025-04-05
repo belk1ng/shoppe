@@ -2,6 +2,8 @@ export * from "./button";
 export * from "./carousel";
 export * from "./counter";
 export * from "./input";
+export * from "./json-ld";
 export * from "./pagination";
 export * from "./progress-bar";
+export * from "./snackbar";
 export * from "./tabs";
