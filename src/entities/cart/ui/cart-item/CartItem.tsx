@@ -1,10 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { Cross } from "@/shared/assets";
 import { cn } from "@/shared/lib";
-import { Counter } from "@/shared/ui";
+import { Counter, PatchedLink } from "@/shared/ui";
 import { useCartContext } from "../../model/CartContextProvider";
 import type { CartItemSchema } from "../../model/types";
 import "./cart-item.scss";
@@ -35,9 +34,12 @@ export function CartItem({ item, className, heading }: CartItemProps) {
 
         <div className={block("info")}>
           <Heading className={block("name")} lang="en">
-            <Link className={block("link")} href={`/catalog/${item.sku}`}>
+            <PatchedLink
+              className={block("link")}
+              href={`/catalog/${item.sku}`}
+            >
               {item.name}
-            </Link>
+            </PatchedLink>
           </Heading>
           <p className={block("price")}>$ {item.price.toFixed(2)}</p>
         </div>

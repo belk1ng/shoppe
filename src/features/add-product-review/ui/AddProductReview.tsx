@@ -1,9 +1,10 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
 import { Rating } from "@/entities/review";
 import { cn } from "@/shared/lib";
 import { Button, Input } from "@/shared/ui";
+import { useSnackbarContext } from "@/shared/ui/snackbar";
 import { getProductReviewDefaults } from "../lib/getProductReviewDefaults";
 import { createReview } from "../model/createReview";
 import "./add-product-review.scss";
@@ -21,8 +22,16 @@ export function AddProductReview({ className, sku }: AddProductReviewProps) {
     getProductReviewDefaults(sku)
   );
 
+  const { onOpenSnackbar } = useSnackbarContext();
+
+  useEffect(() => {
+    if (state.hasSent) {
+      onOpenSnackbar("success", "Ваш отзыв отправлен на модерацию");
+    }
+  }, [state, onOpenSnackbar]);
+
   return (
-    <div className={block("", { sent: state.hasSent }, [className])}>
+    <div className={block({ sent: state.hasSent }, [className])}>
       {state.hasSent ? (
         <h2 className={block("message")}>
           Спасибо за обратную связь, ваш отзыв будет опубликован после проверки!
