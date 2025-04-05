@@ -4,6 +4,7 @@ import { Footer } from "@/widgets/footer";
 import { Header } from "@/widgets/header";
 import { CartProvider, getCartCookie } from "@/entities/cart";
 import { ProgressBar } from "@/shared/ui/progress-bar";
+import { Snackbar } from "@/shared/ui/snackbar";
 import "@/shared/styles/main.scss";
 
 const openSans = Open_Sans({
@@ -64,13 +65,15 @@ export default async function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="ru">
       <body className={openSans.className}>
-        <ProgressBar>
-          <CartProvider cartInitialState={cart}>
-            <Header />
-            {children}
-            <Footer />
-          </CartProvider>
-        </ProgressBar>
+        <Snackbar autoHideDuration={5_000}>
+          <ProgressBar>
+            <CartProvider cartInitialState={cart}>
+              <Header />
+              {children}
+              <Footer />
+            </CartProvider>
+          </ProgressBar>
+        </Snackbar>
       </body>
     </html>
   );

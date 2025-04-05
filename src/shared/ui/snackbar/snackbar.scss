@@ -1,0 +1,22 @@
+@use "src/shared/styles/mixins";
+@use "src/shared/styles/variables";
+@use "sass:color";
+
+.snackbar {
+  position: fixed;
+  z-index: 10000;
+  bottom: 0;
+  left: 50%;
+  translate: -50% 0;
+
+  gap: 1em;
+
+  padding: 1em 1.3125em;
+
+  font-size: 1rem;
+  color: variables.$dark-grey;
+
+  background-color: variables.$light-grey;
+  box-shadow: 0 0 8px 0 color.scale(variables.$black, $alpha: -85%);
+  @include mixins.flex-center;
+}
