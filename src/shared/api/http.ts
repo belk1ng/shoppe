@@ -17,7 +17,7 @@ export interface SearchParams {
  *
  * @template Body - The type of the request body.
  */
-type BaseRequestOptions<Body> = Omit<RequestInit, "body"> & {
+export type BaseRequestOptions<Body> = Omit<RequestInit, "body"> & {
   /**
    * The request body (optional). Its type depends on the HTTP method and use case.
    */
@@ -28,6 +28,15 @@ type BaseRequestOptions<Body> = Omit<RequestInit, "body"> & {
    */
   params?: URLSearchParams;
 };
+
+/**
+ * Represents the base options for making HTTP requests without `body` property.
+ * Extends `BaseRequestOptions` by omitting the `body` property.
+ */
+export type BaseSimpleRequestOptions = Omit<
+  BaseRequestOptions<undefined>,
+  "body"
+>;
 
 /**
  * A class for making HTTP requests to a specified base URL.
@@ -128,7 +137,7 @@ export class HttpClient {
    */
   public get<Response>(
     url: string,
-    options: Omit<BaseRequestOptions<undefined>, "body"> = {}
+    options: BaseSimpleRequestOptions = {}
   ): Promise<Response> {
     return this.request<Response>(url, "GET", options);
   }
@@ -191,7 +200,7 @@ export class HttpClient {
    */
   public delete<Response>(
     url: string,
-    options: Omit<BaseRequestOptions<undefined>, "body"> = {}
+    options: BaseSimpleRequestOptions = {}
   ): Promise<Response> {
     return this.request<Response>(url, "DELETE", options);
   }
