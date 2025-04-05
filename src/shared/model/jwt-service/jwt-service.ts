@@ -51,5 +51,5 @@ export const clearJwtToken = async () => {
  */
 export const getBearer = async () => {
   const token = await getJwtToken();
-  return `Bearer ${token}`;
+  return token ? `Bearer ${token}` : "";
 };

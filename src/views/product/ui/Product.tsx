@@ -29,7 +29,6 @@ export async function Product({ params }: ProductPageProps) {
           { title: "Описание", content: product.description },
           {
             title: `Отзывы (${product.reviews.length})`,
-            scrollIntoView: true,
             content: (
               <div className={block("reviews")}>
                 <div className={block("reviewsList")}>
