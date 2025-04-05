@@ -12,10 +12,12 @@ export const withAuth: MiddlewareFactory = (next) => {
 
     if (/^\/(profile|favorite)/.test(pathname)) {
       try {
+        // NOTE: Token's healthcheck
         await userService.getUserProfile({
-          headers: new Headers({
+          headers: {
             Authorization: await getBearer(),
-          }),
+          },
+          cache: "no-cache",
         });
       } catch {
         await clearJwtToken();

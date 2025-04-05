@@ -10,8 +10,13 @@ RUN yarn install --frozen-lockfile
 FROM base AS build
 COPY --from=dependencies /app/node_modules ./node_modules
 COPY . .
+
 ARG NEXT_PUBLIC_API_BASE_URL
 ENV NEXT_PUBLIC_API_BASE_URL $NEXT_PUBLIC_API_BASE_URL
+
+ARG NEXT_PUBLIC_INTERNAL_API_URL
+ENV NEXT_PUBLIC_INTERNAL_API_URL $NEXT_PUBLIC_INTERNAL_API_URL
+
 RUN yarn build
 
 FROM base AS run

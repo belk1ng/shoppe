@@ -1,3 +1,5 @@
+import { HttpError } from "./http-error";
+
 /**
  * Represents the supported HTTP methods for making requests.
  */
@@ -77,7 +79,8 @@ export class HttpClient {
     method: HttpMethod,
     options: BaseRequestOptions<Body> = {}
   ): Promise<Response> {
-    const { headers = {}, body, params, ...otherOptions } = options;
+    const { headers, body, params, ...otherOptions } = options;
+
     const fetchOptions: RequestInit = {
       method,
       headers: {
@@ -98,8 +101,23 @@ export class HttpClient {
 
     const response = await fetch(url, fetchOptions);
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      const body = await response.json();
+
+      if (
+        body &&
+        (typeof body.message === "string" || Array.isArray(body.message)) &&
+        typeof body.statusCode === "number"
+      ) {
+        throw new HttpError(body);
+      } else {
+        throw new HttpError({
+          error: "Unknown error",
+          message: `Unknown error: ${response.statusText}`,
+          statusCode: response.status,
+        });
+      }
     }
+
     return response.json() as Promise<Response>;
   }
 
@@ -207,3 +225,8 @@ export class HttpClient {
 }
 
 export const http = new HttpClient(process.env.NEXT_PUBLIC_API_BASE_URL);
+
+// NOTE: HTTP-Client for calling Next.js route handlers
+export const internalHttp = new HttpClient(
+  process.env.NEXT_PUBLIC_INTERNAL_API_URL
+);
