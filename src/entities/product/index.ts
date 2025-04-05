@@ -1,4 +1,4 @@
-export { productsService } from "./api/products";
+export { productsService } from "./api/productsService";
 export * from "./api/types";
 export * from "./model/types";
 export { getProductPrice } from "./lib/getProductPrice";
