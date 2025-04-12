@@ -3,29 +3,16 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useDebounceCallback } from "@/shared/hooks";
 import { updateCartCookie } from "./actions";
-import { CART_KEY } from "../lib/constants";
 import type { CartItemSchema, CartValues } from "../model/types";
 
 export const useCart = (cartInitialItems: CartValues) => {
   const [items, setItems] = useState<CartValues>(cartInitialItems);
 
-  useEffect(() => {
-    const persistedItems = localStorage.getItem(CART_KEY);
-    if (persistedItems) {
-      setItems(JSON.parse(persistedItems));
-    }
-  }, []);
-
-  const updateLocalStorage = useCallback((items: CartValues) => {
-    localStorage.setItem(CART_KEY, JSON.stringify(items));
-  }, []);
-
   const debouncedUpdateCartCookie = useDebounceCallback(updateCartCookie, 300);
 
   useEffect(() => {
-    updateLocalStorage(items);
     debouncedUpdateCartCookie(items);
-  }, [items, updateLocalStorage, debouncedUpdateCartCookie]);
+  }, [items, debouncedUpdateCartCookie]);
 
   const itemsCount = useMemo(
     () => items.reduce((acc, curr) => (acc += curr.count), 0),
