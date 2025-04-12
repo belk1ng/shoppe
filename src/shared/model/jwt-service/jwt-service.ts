@@ -8,10 +8,18 @@ const JWT_TOKEN_KEY = "accessToken";
  * Stores a JWT token in a secure HTTP-only cookie.
  *
  * @param {string} token - The JWT token to store
+ * @param {boolean} rememberMe - If true sets cookie with maxAge (2 weeks).
+ *                               If false creates a session cookie that expires when browser closes.
  * @returns {Promise<void>}
+ *
+ * @example
+ * // Persistent cookie (expires in 2 weeks)
+ * await storeJwtToken('abc123', true);
+ *
+ * // Session cookie (expires when browser closes)
+ * await storeJwtToken('abc123');
  */
-export const storeJwtToken = async (token: string) => {
-  // TODO: Set expires on
+export const storeJwtToken = async (token: string, rememberMe = false) => {
   const cookie = await cookies();
   cookie.set({
     name: JWT_TOKEN_KEY,
@@ -19,6 +27,9 @@ export const storeJwtToken = async (token: string) => {
     httpOnly: true,
     sameSite: true,
     secure: true,
+    ...(rememberMe && {
+      maxAge: 60 * 60 * 24 * 14,
+    }),
   });
 };
 

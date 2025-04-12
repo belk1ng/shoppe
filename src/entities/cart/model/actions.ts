@@ -17,5 +17,12 @@ export const getCartCookie = async () => {
 
 export const updateCartCookie = async (value: CartValues) => {
   const cookie = await cookies();
-  cookie.set(CART_KEY, JSON.stringify(value));
+  cookie.set({
+    name: CART_KEY,
+    value: JSON.stringify(value),
+    maxAge: 60 * 60 * 24 * 30,
+    httpOnly: true,
+    secure: true,
+    sameSite: true,
+  });
 };

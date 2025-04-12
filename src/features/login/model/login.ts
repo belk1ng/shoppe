@@ -27,7 +27,7 @@ export const loginAction = async (
 
   try {
     const { access_token } = await authService.login(rawFormData);
-    await storeJwtToken(access_token);
+    await storeJwtToken(access_token, true);
 
     return {
       status: AuthStatus.SUCCESS,
