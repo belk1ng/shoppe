@@ -43,4 +43,11 @@
     font-size: 0.875em;
     color: variables.$red;
   }
+
+  &__passwordAction {
+    cursor: pointer;
+    border: 0;
+    background-color: transparent;
+    @include mixins.flex-center;
+  }
 }

@@ -44,6 +44,7 @@ export function Login({ className }: LoginProps) {
         label="Password"
         name="password"
         placeholder="Password"
+        type="password"
       />
       <Button
         disabled={isPending}
