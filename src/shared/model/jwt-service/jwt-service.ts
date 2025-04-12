@@ -11,6 +11,7 @@ const JWT_TOKEN_KEY = "accessToken";
  * @returns {Promise<void>}
  */
 export const storeJwtToken = async (token: string) => {
+  // TODO: Set expires on
   const cookie = await cookies();
   cookie.set({
     name: JWT_TOKEN_KEY,

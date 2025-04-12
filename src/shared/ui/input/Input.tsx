@@ -1,11 +1,16 @@
 "use client";
 
-import { type InputHTMLAttributes, type ReactNode, useId } from "react";
+import {
+  type InputHTMLAttributes,
+  type ReactNode,
+  useId,
+  useState,
+} from "react";
+import { ClosedEye, OpenedEye } from "@/shared/assets";
 import { cn } from "@/shared/lib/cn";
 import "./input.scss";
 
-export interface InputProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, "type"> {
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   startIcon?: ReactNode;
   endIcon?: ReactNode;
@@ -21,9 +26,18 @@ export function Input({
   startIcon,
   endIcon,
   errorMessage,
+  type = "text",
   ...props
 }: InputProps) {
   const _id = useId();
+
+  const [isPasswordVisible, setPasswordVisible] = useState(false);
+
+  const onTogglePasswordVisibility = () => {
+    setPasswordVisible((prev) => !prev);
+  };
+
+  const isPassword = type === "password";
 
   return (
     <div className={block("", [className])}>
@@ -36,10 +50,21 @@ export function Input({
           aria-invalid={Boolean(errorMessage)}
           className={block("field")}
           id={id ?? _id}
+          type={isPassword ? (isPasswordVisible ? "text" : "password") : type}
           {...props}
-          type="text"
         />
-        {endIcon}
+        {isPassword ? (
+          <button
+            aria-label={isPasswordVisible ? "Скрыть пароль" : "Показать пароль"}
+            className={block("passwordAction")}
+            onClick={onTogglePasswordVisibility}
+            type="button"
+          >
+            {isPasswordVisible ? <ClosedEye /> : <OpenedEye />}
+          </button>
+        ) : (
+          endIcon
+        )}
       </div>
 
       {errorMessage && (
